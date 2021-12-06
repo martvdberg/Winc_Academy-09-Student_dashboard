@@ -1,11 +1,14 @@
 export const csvToArray = (str, delimiter = ",") => {
-  const headerValues = ["name", "opdr", "difficult", "fun"];
+  // set new headers and extract rows tarting after the first line break
+  const headerValues = ["name", "task", "diff", "fun"];
   const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+
+  // create an object for each value of the with the header as object property
   const completeObject = rows.map((row) => {
     const values = row.split(delimiter);
-    const element = headerValues.reduce((returnObject, header, index) => {
-      returnObject[header] = values[index];
-      return returnObject;
+    const element = headerValues.reduce((objectValue, header, index) => {
+      objectValue[header] = values[index];
+      return objectValue;
     }, {});
     return element;
   });
@@ -13,8 +16,9 @@ export const csvToArray = (str, delimiter = ",") => {
 };
 
 export const createObjectPerPerson = (object) =>
-  object.reduce((pV, current) => {
-    if (!pV.some((e) => e.details.firstName === current.name)) {
+  object.reduce((students, current) => {
+    // create a new student object if student name does not exist yet
+    if (!students.some((e) => e.details.firstName === current.name)) {
       const newPerson = {
         details: {
           firstName: current.name,
@@ -22,28 +26,32 @@ export const createObjectPerPerson = (object) =>
           age: "random age",
           email: "generate from first and lastname",
           photo: "random photo url",
+          id: generateId(),
+          checked: false,
         },
-        assingments: [
+        assignments: [
           {
-            opdr: current.opdr,
-            diff: current.difficult,
-            fun: current.fun,
+            task: current.task,
+            diff: current.diff,
+            fun: current.fun.slice(0, 1), // \r comes after the fun value need to fix this in csvToArry
           },
         ],
-        id: `${Math.floor(Math.random() * 987845687854566)}-${Math.floor(
-          Math.random() * 987845687854566
-        )}`,
       };
-      pV.push(newPerson);
+      students.push(newPerson);
     } else {
-      const update = {
-        opdr: current.opdr,
-        diff: current.difficult,
-        fun: current.fun,
+      const newTask = {
+        task: current.task,
+        diff: current.diff,
+        fun: current.fun.slice(0, 1), // \r comes after the fun value need to fix this in csvToArry
       };
-      pV[
-        pV.findIndex((e) => e.details.firstName === current.name)
-      ].assingments.push(update);
+      students[
+        students.findIndex((e) => e.details.firstName === current.name)
+      ].assignments.push(newTask);
     }
-    return pV;
+    return students;
   }, []);
+
+export const generateId = () =>
+  `${Math.floor(Math.random() * 999999999)}-${Math.floor(
+    Math.random() * 999999999
+  )}`;
