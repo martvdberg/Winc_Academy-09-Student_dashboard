@@ -1,0 +1,75 @@
+import React from "react";
+
+import {
+  VictoryChart,
+  VictoryGroup,
+  VictoryBar,
+  VictoryAxis,
+  VictoryTheme,
+  VictoryLabel,
+  VictoryZoomContainer,
+  VictoryLegend,
+} from "victory";
+
+const colorFun = "#84DFFF";
+const colorDiff = "#516BEB";
+
+function Chart({ avarege }) {
+  return (
+    <div>
+      <VictoryChart
+        height={350}
+        width={1100}
+        domainPadding={{ x: 8, y: 5 }}
+        theme={VictoryTheme.material}
+        padding={{ left: 50, top: 0, right: 20, bottom: 80 }}
+        containerComponent={<VictoryZoomContainer zoomDimension="y" />}
+      >
+        <VictoryLegend
+          x={1000}
+          y={0}
+          orientation="vertical"
+          data={[
+            { name: "Fun", symbol: { fill: colorFun } },
+            { name: "Difficult", symbol: { fill: colorDiff } },
+          ]}
+        />
+        <VictoryAxis
+          style={{
+            tickLabels: { angle: -65, fontSize: 8 },
+          }}
+          tickLabelComponent={<VictoryLabel textAnchor={"end"} />}
+        />
+
+        <VictoryAxis
+          dependentAxis
+          tickValues={[1, 2, 3, 4, 5]}
+          style={{
+            tickLabels: { fontSize: 6 },
+          }}
+        />
+
+        <VictoryGroup
+          offset={7}
+          style={{ data: { width: 6 } }}
+          //   colorScale={"warm"}
+        >
+          <VictoryBar
+            data={avarege}
+            x="task"
+            y="fun"
+            style={{ data: { fill: colorFun } }}
+          />
+          <VictoryBar
+            data={avarege}
+            x="task"
+            y="diff"
+            style={{ data: { fill: colorDiff } }}
+          />
+        </VictoryGroup>
+      </VictoryChart>
+    </div>
+  );
+}
+
+export default Chart;

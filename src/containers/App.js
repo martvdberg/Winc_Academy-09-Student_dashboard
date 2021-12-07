@@ -73,7 +73,7 @@ function App() {
       <StudentList students={dataPerStudent} />
       <ChartFilter />
 
-      <MainView />
+      <MainView avarege={avarege} />
     </div>
   );
 }

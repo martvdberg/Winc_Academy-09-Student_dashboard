@@ -44,6 +44,9 @@ export const createObjectPerPerson = (object) =>
         diff: current.diff,
         fun: current.fun.slice(0, 1), // \r comes after the fun value need to fix this in csvToArry
       };
+      if (isNaN(current.task.slice(-1))) {
+        newTask.task = current.task.split(" ").pop();
+      }
       students[
         students.findIndex((e) => e.details.firstName === current.name)
       ].assignments.push(newTask);
