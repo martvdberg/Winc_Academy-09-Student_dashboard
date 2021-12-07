@@ -3,14 +3,15 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import StudentList from "./StudentsList";
 import ChartFilter from "./ChartFilter";
-import MainOverview from "./MainOverview";
-import StudentOverview from "./StudentOverview";
+import MainOverview from "../components/MainOverview";
+import StudentOverview from "../components/StudentOverview";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { csvToArray, createObjectPerPerson, generateId } from "../util";
 
 const calcAverage = (studentsData) => {
+  // console.log(studentsData);
   if (studentsData[0] !== undefined) {
     // creat an array wih all the assignments
     let assignments = studentsData[0].assignments.map((e) => {
@@ -71,10 +72,19 @@ function App() {
   }, [dataPerStudent]);
 
   const studentPages = dataPerStudent.map((student) => {
+    console.log(student);
+    const chartData = calcAverage([student]);
+    console.log(chartData);
     return (
       <Route
         path={`/${student.details.firstName}`}
-        element={<StudentOverview student={student} key={generateId()} />}
+        element={
+          <StudentOverview
+            student={student}
+            chartData={chartData}
+            key={generateId()}
+          />
+        }
       />
     );
   });

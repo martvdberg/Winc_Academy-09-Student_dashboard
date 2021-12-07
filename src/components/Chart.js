@@ -8,7 +8,6 @@ import {
   VictoryTheme,
   VictoryLabel,
   VictoryZoomContainer,
-  VictoryLegend,
 } from "victory";
 
 const colorFun = "#84DFFF";
@@ -25,15 +24,6 @@ function Chart({ average }) {
         padding={{ left: 50, top: 0, right: 20, bottom: 80 }}
         containerComponent={<VictoryZoomContainer zoomDimension="y" />}
       >
-        <VictoryLegend
-          x={1000}
-          y={350}
-          orientation="vertical"
-          data={[
-            { name: "Fun", symbol: { fill: colorFun } },
-            { name: "Difficult", symbol: { fill: colorDiff } },
-          ]}
-        />
         <VictoryAxis
           style={{
             tickLabels: { angle: -65, fontSize: 8 },

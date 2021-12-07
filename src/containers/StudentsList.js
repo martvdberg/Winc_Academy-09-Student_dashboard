@@ -1,11 +1,11 @@
 import React from "react";
-import Student from "../components/Student";
+import StudentListItem from "../components/StudentListItem";
 import { generateId } from "../util";
 
 function StudentList({ students }) {
   const studentElement = students.map((student) => {
     return (
-      <Student
+      <StudentListItem
         firstName={student.details.firstName}
         lastName={student.details.lastName}
         value={student.details.checked}

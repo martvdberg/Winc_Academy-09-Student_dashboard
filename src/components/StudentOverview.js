@@ -1,8 +1,8 @@
 import React from "react";
-import Chart from "../components/Chart";
+import Chart from "./Chart";
 
-function StudentOverview({ student }) {
-  console.log(student.assignments);
+function StudentOverview({ student, chartData }) {
+  //   console.log(student.assignments);
   return (
     <div>
       <h2>Student overview</h2>
@@ -16,7 +16,7 @@ function StudentOverview({ student }) {
         </p>
       </section>
 
-      <Chart average={student.assignments} />
+      <Chart average={chartData} />
     </div>
   );
 }
