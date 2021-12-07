@@ -2,7 +2,6 @@ import React from "react";
 import Chart from "./Chart";
 
 function StudentOverview({ student, chartData }) {
-  //   console.log(student.assignments);
   return (
     <div>
       <h2>Student overview</h2>
