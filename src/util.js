@@ -45,7 +45,7 @@ export const createObjectPerPerson = (object) =>
         diff: current.diff,
       };
       if (isNaN(current.task.slice(-1))) {
-        newTask.task = current.task.split(" ").pop();
+        newTask.task = current.task.split("Project -").pop();
       }
       students[
         students.findIndex((e) => e.details.firstName === current.name)
