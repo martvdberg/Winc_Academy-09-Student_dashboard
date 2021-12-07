@@ -32,8 +32,8 @@ export const createObjectPerPerson = (object) =>
         assignments: [
           {
             task: current.task,
-            diff: current.diff,
             fun: current.fun.slice(0, 1), // \r comes after the fun value need to fix this in csvToArry
+            diff: current.diff,
           },
         ],
       };
@@ -41,8 +41,8 @@ export const createObjectPerPerson = (object) =>
     } else {
       const newTask = {
         task: current.task,
-        diff: current.diff,
         fun: current.fun.slice(0, 1), // \r comes after the fun value need to fix this in csvToArry
+        diff: current.diff,
       };
       if (isNaN(current.task.slice(-1))) {
         newTask.task = current.task.split(" ").pop();

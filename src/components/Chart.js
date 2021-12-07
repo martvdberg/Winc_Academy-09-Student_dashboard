@@ -14,7 +14,7 @@ import {
 const colorFun = "#84DFFF";
 const colorDiff = "#516BEB";
 
-function Chart({ avarege }) {
+function Chart({ average }) {
   return (
     <div>
       <VictoryChart
@@ -27,7 +27,7 @@ function Chart({ avarege }) {
       >
         <VictoryLegend
           x={1000}
-          y={0}
+          y={350}
           orientation="vertical"
           data={[
             { name: "Fun", symbol: { fill: colorFun } },
@@ -44,6 +44,7 @@ function Chart({ avarege }) {
         <VictoryAxis
           dependentAxis
           tickValues={[1, 2, 3, 4, 5]}
+          tickCount={5}
           style={{
             tickLabels: { fontSize: 6 },
           }}
@@ -55,13 +56,13 @@ function Chart({ avarege }) {
           //   colorScale={"warm"}
         >
           <VictoryBar
-            data={avarege}
+            data={average}
             x="task"
             y="fun"
             style={{ data: { fill: colorFun } }}
           />
           <VictoryBar
-            data={avarege}
+            data={average}
             x="task"
             y="diff"
             style={{ data: { fill: colorDiff } }}

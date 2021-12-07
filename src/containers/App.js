@@ -4,8 +4,11 @@ import Header from "../components/Header";
 import StudentList from "./StudentsList";
 import ChartFilter from "./ChartFilter";
 import MainOverview from "./MainOverview";
+import StudentOverview from "./StudentOverview";
 
-import { csvToArray, createObjectPerPerson } from "../util";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { csvToArray, createObjectPerPerson, generateId } from "../util";
 
 const calcAverage = (studentsData) => {
   if (studentsData[0] !== undefined) {
@@ -46,7 +49,7 @@ const calcAverage = (studentsData) => {
 function App() {
   const [data, setData] = useState("");
   const [dataPerStudent, setdataPerStudent] = useState([]);
-  const [avarege, setAvarege] = useState([]);
+  const [average, setAverage] = useState([]);
 
   // fetch csv file from the public folder and put it into data
   useEffect(() => {
@@ -64,17 +67,30 @@ function App() {
   // when dataPerStudent change(becuase a student get selected) calc new avarge per assignment
   // need to filter students who have been selected and if none pass the whole array of students
   useEffect(() => {
-    setAvarege(calcAverage(dataPerStudent));
+    setAverage(calcAverage(dataPerStudent));
   }, [dataPerStudent]);
 
-  return (
-    <div className="App">
-      <Header />
-      <StudentList students={dataPerStudent} />
-      <ChartFilter />
+  const studentPages = dataPerStudent.map((student) => {
+    return (
+      <Route
+        path={`/${student.details.firstName}`}
+        element={<StudentOverview student={student} key={generateId()} />}
+      />
+    );
+  });
 
-      <MainOverview avarege={avarege} />
-    </div>
+  return (
+    <Router>
+      <div className="App">
+        <Header />
+        <StudentList students={dataPerStudent} />
+        <ChartFilter />
+        <Routes>
+          <Route path="/" element={<MainOverview average={average} />} />
+          {studentPages}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

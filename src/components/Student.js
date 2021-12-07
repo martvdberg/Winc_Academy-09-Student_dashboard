@@ -1,13 +1,9 @@
-// element to create each seperate student
 import React from "react";
+import { Link } from "react-router-dom";
+import { generateId } from "../util";
 
 function Student({ firstName, lastName }) {
-  return (
-    <label htmlFor={`${firstName}Selector`}>
-      <input type="checkbox" id={`${firstName}Selector`} />
-      {firstName} {lastName}
-    </label>
-  );
+  return <Link to={`/${firstName}`} key={generateId()}>{`${firstName}`}</Link>;
 }
 
 export default Student;

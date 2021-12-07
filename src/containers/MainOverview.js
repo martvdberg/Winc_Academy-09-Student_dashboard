@@ -1,12 +1,12 @@
 import React from "react";
 import Chart from "../components/Chart";
 
-function MainOverview({ avarege }) {
-  console.log(avarege);
+function MainOverview({ average }) {
+  console.log(average);
   return (
     <section className="MainOverview">
-      <h2>Main view</h2>
-      <Chart avarege={avarege} />
+      <h2>Main overview</h2>
+      <Chart average={average} />
     </section>
   );
 }
