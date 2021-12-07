@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import StudentList from "./StudentsList";
 import ChartFilter from "./ChartFilter";
-import MainView from "./MainView";
+import MainOverview from "./MainOverview";
 
 import { csvToArray, createObjectPerPerson } from "../util";
 
@@ -73,7 +73,7 @@ function App() {
       <StudentList students={dataPerStudent} />
       <ChartFilter />
 
-      <MainView avarege={avarege} />
+      <MainOverview avarege={avarege} />
     </div>
   );
 }
