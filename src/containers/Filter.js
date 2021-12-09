@@ -13,15 +13,6 @@ function Filter({ dataPerStudent, handleSubmit }) {
     setStudents(dataPerStudent);
   }, [dataPerStudent]);
 
-  // const students = dataPerStudent.map((student) => {
-  //   return {
-  //     firstName: student.details.firstName,
-  //     lastName: student.details.lastName,
-  //     id: student.details.id,
-  //     checked: student.details.checked,
-  //   };
-  // });
-
   const handleClickShowItems = (event) => {
     const targetElement = event.target.id.slice(4);
     if (
