@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ChartFilter from "../components/chartFilter/ChartFilter";
 import StudentFilter from "../components/studentFilter/StudentsFilter";
 
-function Filter({ dataPerStudent, handleSubmit }) {
+function Filter({ dataPerStudent, handleSubmit, handleChangeStudentCheckbox }) {
   const [showItems, setShowItems] = useState({
     StudentLinks: false,
     StudentCheckboxes: false,
@@ -32,24 +32,24 @@ function Filter({ dataPerStudent, handleSubmit }) {
     }
   };
 
-  const handleChangeStudentCheckbox = (event) => {
-    setStudents((prevState) => {
-      const newState = prevState.map((student, index) => {
-        if (student.details.id === event.target.value) {
-          return {
-            details: {
-              ...student.details,
-              checked: !prevState[index].details.checked,
-            },
-            assignments: [...student.assignments],
-          };
-        } else {
-          return { ...student };
-        }
-      });
-      return newState;
-    });
-  };
+  // const handleChangeStudentCheckbox = (event) => {
+  //   setStudents((prevState) => {
+  //     const newState = prevState.map((student, index) => {
+  //       if (student.details.id === event.target.value) {
+  //         return {
+  //           details: {
+  //             ...student.details,
+  //             checked: !prevState[index].details.checked,
+  //           },
+  //           assignments: [...student.assignments],
+  //         };
+  //       } else {
+  //         return { ...student };
+  //       }
+  //     });
+  //     return newState;
+  //   });
+  // };
 
   return (
     <section className="filterContainer">

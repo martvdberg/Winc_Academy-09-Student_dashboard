@@ -28,6 +28,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // console.log("hello");
     const calcAverage = (studentsData) => {
       if (studentsData[0] !== undefined) {
         // creat an array wih all the assignments
@@ -67,6 +68,25 @@ function App() {
     setAveragePerTask(average);
   }, [dataPerStudent]);
 
+  const handleChangeStudentCheckbox = (event) => {
+    setDataPerStudent((prevState) => {
+      const newState = prevState.map((student, index) => {
+        if (student.details.id === event.target.value) {
+          return {
+            details: {
+              ...student.details,
+              checked: !prevState[index].details.checked,
+            },
+            assignments: [...student.assignments],
+          };
+        } else {
+          return { ...student };
+        }
+      });
+      return newState;
+    });
+  };
+
   const handleSubmit = (e, students) => {
     e.preventDefault();
     setDataPerStudent(students);
@@ -75,7 +95,11 @@ function App() {
     <Router>
       <div className="mainWrapper">
         <Header />
-        <Filter dataPerStudent={dataPerStudent} handleSubmit={handleSubmit} />
+        <Filter
+          dataPerStudent={dataPerStudent}
+          handleChangeStudentCheckbox={handleChangeStudentCheckbox}
+          handleSubmit={handleSubmit}
+        />
         {loading ? (
           <h1 className="mainContainer">Loading...</h1>
         ) : (
