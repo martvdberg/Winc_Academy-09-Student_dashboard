@@ -15,14 +15,18 @@ const colorDiff = "#516BEB";
 
 function Chart({ average }) {
   return (
-    <div>
+    <div className="chartWrapper">
       <VictoryChart
         height={350}
         width={1100}
         domainPadding={{ x: 8, y: 5 }}
         theme={VictoryTheme.material}
         padding={{ left: 50, top: 0, right: 20, bottom: 80 }}
-        containerComponent={<VictoryZoomContainer zoomDimension="y" />}
+        containerComponent={
+          <VictoryZoomContainer
+          // zoomDimension={["x", "y"]}
+          />
+        }
       >
         <VictoryAxis
           style={{

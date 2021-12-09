@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mainWrapper {
+  display: grid;
+  grid-template-columns: auto 150px 85% auto;
+  grid-template-rows: 150px 1fr;
+  grid-template-areas: "H H H H H" ". F  M M .";
+}
+
+.header {
+  grid-area: H;
+  text-align: center;
+}
+
+.filterContainer {
+  grid-area: F;
+  align-self: center;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 80px 200px;
+  text-align: start;
+}
+
+.studentFilter {
+  display: flex;
+  flex-direction: column;
+  &__links {
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    z-index: 10;
+    // transform: translateY(10%);
+
+    background-color: green;
+  }
+  &__checkboxes {
+    padding-left: 50px;
+
+    transform: translateY(-90%);
+    z-index: 10;
+    background-color: green;
+  }
+  &__checkboxes--form {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.mainContainer,
+.studentContainer {
+  grid-area: M;
+}
+
+.hidden {
+  transform: translateX(-500px);
+}

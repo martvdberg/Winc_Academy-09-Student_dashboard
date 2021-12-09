@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import MainOverview from "../components/MainOverview";
-import StudentOverview from "../components/StudentOverview";
+import MainOverview from "../components/mainView/MainOverview";
+import StudentOverview from "../components/mainView/StudentOverview";
 import { generateId } from "../util";
 
 const calcAverage = (studentsData) => {
