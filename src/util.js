@@ -54,6 +54,18 @@ export const createObjectPerPerson = (object) =>
     return students;
   }, []);
 
+export const sortByTask = (studentsData) =>
+  studentsData[0].assignments.map((e) => {
+    return {
+      task: e.task,
+      fun: 0,
+      diff: 0,
+    };
+  });
+
+export const getSelectedStudents = (studentsData) =>
+  studentsData.filter((student) => student.details.checked);
+
 export const generateId = () =>
   `${Math.floor(Math.random() * 999999999)}-${Math.floor(
     Math.random() * 999999999

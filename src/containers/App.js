@@ -4,7 +4,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Header from "../components/Header";
 import Main from "./Main";
 import Filter from "./Filter";
-import { csvToArray, createObjectPerPerson } from "../util";
+import {
+  csvToArray,
+  createObjectPerPerson,
+  sortByTask,
+  getSelectedStudents,
+} from "../util";
 
 import "../styles/app.css";
 
@@ -12,6 +17,7 @@ function App() {
   const [dataPerStudent, setDataPerStudent] = useState([]);
   const [averagePerTask, setAveragePerTask] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [filterOn, setFilterOn] = useState(false);
 
   // fetch csv file from the public folder and put it into data
   useEffect(() => {
@@ -21,52 +27,54 @@ function App() {
       const result = await response.text();
       const arrayFromCsv = csvToArray(result);
       const arrayPerStudent = createObjectPerPerson(arrayFromCsv);
+      const average = calcAverage(arrayPerStudent);
       setDataPerStudent(arrayPerStudent);
+      setAveragePerTask(average);
       setLoading(false);
     };
     getData();
   }, []);
 
-  useEffect(() => {
-    // console.log("hello");
-    const calcAverage = (studentsData) => {
-      if (studentsData[0] !== undefined) {
-        // creat an array wih all the assignments
-        const assignments = studentsData[0].assignments.map((e) => {
-          return {
-            task: e.task,
-            fun: 0,
-            diff: 0,
-          };
-        });
-
-        // fill the assignments array with the total scores per task per student
-        studentsData.forEach((student) => {
-          student.assignments.forEach((taskPerStudent) => {
-            const indexOfTask = assignments.findIndex(
-              (e) => e.task === taskPerStudent.task
-            );
-            assignments[indexOfTask].fun =
-              assignments[indexOfTask].fun + parseInt(taskPerStudent.fun);
-            assignments[indexOfTask].diff =
-              assignments[indexOfTask].diff + parseInt(taskPerStudent.diff);
-          });
-        });
-
-        // calc average for fun and diff -> divide the total with the amount of students
-        const averagePerTask = assignments.map((task) => {
-          return {
-            task: task.task,
-            fun: task.fun / studentsData.length,
-            diff: task.diff / studentsData.length,
-          };
-        });
-        return averagePerTask;
+  const calcAverage = (studentsData) => {
+    if (studentsData[0] !== undefined) {
+      // get an array wih all the assignments
+      const assignments = sortByTask(studentsData);
+      // get an array with all the selected students
+      const selectedStudents = getSelectedStudents(studentsData);
+      //  decide wich array to use
+      let arrayForCalc;
+      if (selectedStudents.length > 0) {
+        setFilterOn(true);
+        arrayForCalc = selectedStudents;
+      } else {
+        setFilterOn(false);
+        arrayForCalc = studentsData;
       }
-    };
-    const average = calcAverage(dataPerStudent);
-    setAveragePerTask(average);
-  }, [dataPerStudent]);
+
+      // fill the assignments array with the total scores per task per student
+      arrayForCalc.forEach((student) => {
+        student.assignments.forEach((taskPerStudent) => {
+          const indexOfTask = assignments.findIndex(
+            (e) => e.task === taskPerStudent.task
+          );
+          assignments[indexOfTask].fun =
+            assignments[indexOfTask].fun + parseInt(taskPerStudent.fun);
+          assignments[indexOfTask].diff =
+            assignments[indexOfTask].diff + parseInt(taskPerStudent.diff);
+        });
+      });
+
+      // calc average for fun and diff -> divide the total with the amount of students
+      const averagePerTask = assignments.map((task) => {
+        return {
+          task: task.task,
+          fun: task.fun / arrayForCalc.length,
+          diff: task.diff / arrayForCalc.length,
+        };
+      });
+      return averagePerTask;
+    }
+  };
 
   const handleChangeStudentCheckbox = (event) => {
     setDataPerStudent((prevState) => {
@@ -89,6 +97,8 @@ function App() {
 
   const handleSubmit = (e, students) => {
     e.preventDefault();
+    const newAverage = calcAverage(students);
+    setAveragePerTask(newAverage);
     setDataPerStudent(students);
   };
   return (
