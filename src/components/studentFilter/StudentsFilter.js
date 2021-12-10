@@ -16,7 +16,6 @@ function StudentFilter({
       <StudentFilterItem
         firstName={student.details.firstName}
         lastName={student.details.lastName}
-        // value={student.details.checked}
         key={generateId()}
         handleClickShowItems={handleClickShowItems}
       />
@@ -50,6 +49,7 @@ function StudentFilter({
       >
         Filter students
       </button>
+
       <div
         className={`studentFilter__links ${
           showItems.StudentLinks ? null : "hidden"
@@ -72,7 +72,12 @@ function StudentFilter({
           onSubmit={(event) => handleSubmit(event, students)}
         >
           {studentFilterCheckbox}
-          <button onClick={(event) => handleClickShowItems(event)}>
+
+          <button
+            onClick={(event) => {
+              handleClickShowItems(event);
+            }}
+          >
             Filter students
           </button>
         </form>

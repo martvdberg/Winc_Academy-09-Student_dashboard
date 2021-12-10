@@ -1,7 +1,7 @@
 import React from "react";
 
-function StudentFilterItem({ firstName, lastName, handleClickShowItems }) {
-  return <span>{`${firstName}`}</span>;
+function StudentFilterItem({ firstName, lastName, changeFilterOn }) {
+  return <span onClick={changeFilterOn}>{`${firstName}`}</span>;
 }
 
 export default StudentFilterItem;

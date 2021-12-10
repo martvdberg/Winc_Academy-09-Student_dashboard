@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Chart from "./Chart";
 
 function StudentOverview({ student, chartData }) {

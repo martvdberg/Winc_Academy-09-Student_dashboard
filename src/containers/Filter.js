@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ChartFilter from "../components/chartFilter/ChartFilter";
 import StudentFilter from "../components/studentFilter/StudentsFilter";
 
@@ -7,11 +7,6 @@ function Filter({ dataPerStudent, handleSubmit, handleChangeStudentCheckbox }) {
     StudentLinks: false,
     StudentCheckboxes: false,
   });
-  const [students, setStudents] = useState([]);
-
-  useEffect(() => {
-    setStudents(dataPerStudent);
-  }, [dataPerStudent]);
 
   const handleClickShowItems = (event) => {
     const targetElement = event.target.id.slice(4);
@@ -32,29 +27,10 @@ function Filter({ dataPerStudent, handleSubmit, handleChangeStudentCheckbox }) {
     }
   };
 
-  // const handleChangeStudentCheckbox = (event) => {
-  //   setStudents((prevState) => {
-  //     const newState = prevState.map((student, index) => {
-  //       if (student.details.id === event.target.value) {
-  //         return {
-  //           details: {
-  //             ...student.details,
-  //             checked: !prevState[index].details.checked,
-  //           },
-  //           assignments: [...student.assignments],
-  //         };
-  //       } else {
-  //         return { ...student };
-  //       }
-  //     });
-  //     return newState;
-  //   });
-  // };
-
   return (
     <section className="filterContainer">
       <StudentFilter
-        students={students}
+        students={dataPerStudent}
         showItems={showItems}
         handleClickShowItems={handleClickShowItems}
         handleChangeStudentCheckbox={handleChangeStudentCheckbox}

@@ -17,7 +17,6 @@ function App() {
   const [dataPerStudent, setDataPerStudent] = useState([]);
   const [averagePerTask, setAveragePerTask] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [filterOn, setFilterOn] = useState(false);
 
   // fetch csv file from the public folder and put it into data
   useEffect(() => {
@@ -44,10 +43,8 @@ function App() {
       //  decide wich array to use
       let arrayForCalc;
       if (selectedStudents.length > 0) {
-        setFilterOn(true);
         arrayForCalc = selectedStudents;
       } else {
-        setFilterOn(false);
         arrayForCalc = studentsData;
       }
 
@@ -95,12 +92,13 @@ function App() {
     });
   };
 
-  const handleSubmit = (e, students) => {
-    e.preventDefault();
+  const handleSubmit = (event, students) => {
+    event.preventDefault();
     const newAverage = calcAverage(students);
     setAveragePerTask(newAverage);
     setDataPerStudent(students);
   };
+
   return (
     <Router>
       <div className="mainWrapper">
