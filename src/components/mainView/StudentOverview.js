@@ -2,7 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Chart from "./Chart";
 
-function StudentOverview({ student, chartData, handleAllSelectedStudents }) {
+function StudentOverview({
+  student,
+  chartData,
+  chartFilters,
+  handleAllSelectedStudents,
+}) {
   return (
     <section className="studentContainer">
       <h2>Student overview</h2>
@@ -34,7 +39,7 @@ function StudentOverview({ student, chartData, handleAllSelectedStudents }) {
         </Link>
       </section>
 
-      <Chart average={chartData} />
+      <Chart average={chartData} chartFilters={chartFilters} />
     </section>
   );
 }

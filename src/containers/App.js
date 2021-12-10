@@ -17,6 +17,12 @@ function App() {
   const [dataPerStudent, setDataPerStudent] = useState([]);
   const [averagePerTask, setAveragePerTask] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [chartFilters, setChartFilters] = useState({
+    funChart: true,
+    diffChart: true,
+    lineGraph: false,
+    barChart: true,
+  });
 
   // fetch csv file from the public folder and put it into data
   useEffect(() => {
@@ -103,7 +109,6 @@ function App() {
         assignments: [...student.assignments],
       };
     });
-    console.log(newState);
     const newAverage = calcAverage(newState);
     setDataPerStudent(newState);
     setAveragePerTask(newAverage);
@@ -112,6 +117,37 @@ function App() {
   const handleSubmitSelectedStudents = () => {
     const newAverage = calcAverage(dataPerStudent);
     setAveragePerTask(newAverage);
+  };
+
+  const handleChangeChartCheckboxes = (event) => {
+    console.log(event.target.value);
+    setChartFilters((prevState) => {
+      let newState;
+      if (
+        event.target.value === "lineGraph" ||
+        event.target.value === "barChart"
+      ) {
+        newState = {
+          ...prevState,
+          lineGraph: false,
+          barChart: false,
+          [event.target.value]: true,
+        };
+      } else {
+        newState = {
+          ...prevState,
+          [event.target.value]: !prevState[event.target.value],
+        };
+      }
+      // make sure there will always be a graph visible
+      if (!newState.funChart && !newState.diffChart) {
+        newState = {
+          ...newState,
+          [event.target.value]: true,
+        };
+      }
+      return newState;
+    });
   };
 
   return (
@@ -123,6 +159,8 @@ function App() {
           handleChangeStudentCheckbox={handleChangeStudentCheckbox}
           handleSubmitSelectedStudents={handleSubmitSelectedStudents}
           handleAllSelectedStudents={handleAllSelectedStudents}
+          handleChangeChartCheckboxes={handleChangeChartCheckboxes}
+          chartFilters={chartFilters}
         />
         {loading ? (
           <h1 className="mainContainer">Loading...</h1>
@@ -131,6 +169,7 @@ function App() {
             students={dataPerStudent}
             average={averagePerTask}
             handleAllSelectedStudents={handleAllSelectedStudents}
+            chartFilters={chartFilters}
           />
         )}
       </div>

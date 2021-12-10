@@ -8,27 +8,33 @@ function Filter({
   handleSubmitSelectedStudents,
   handleChangeStudentCheckbox,
   handleAllSelectedStudents,
+  handleChangeChartCheckboxes,
+  chartFilters,
 }) {
   const [showItems, setShowItems] = useState({
     StudentLinks: false,
     StudentCheckboxes: false,
+    ChartFilters: false,
   });
 
   const handleClickShowItems = (event) => {
     const targetElement = event.target.id.slice(4);
     if (
       targetElement === "StudentLinks" ||
-      targetElement === "StudentCheckboxes"
+      targetElement === "StudentCheckboxes" ||
+      targetElement === "ChartFilters"
     ) {
       setShowItems({
         StudentLinks: false,
         StudentCheckboxes: false,
+        ChartFilters: false,
         [targetElement]: !showItems[targetElement],
       });
     } else {
       setShowItems({
         StudentLinks: false,
         StudentCheckboxes: false,
+        ChartFilters: false,
       });
     }
   };
@@ -49,7 +55,12 @@ function Filter({
         handleAllSelectedStudents={handleAllSelectedStudents}
       />
 
-      <SelectChartFilters />
+      <SelectChartFilters
+        showItems={showItems}
+        handleClickShowItems={handleClickShowItems}
+        handleChangeChartCheckboxes={handleChangeChartCheckboxes}
+        chartFilters={chartFilters}
+      />
     </section>
   );
 }

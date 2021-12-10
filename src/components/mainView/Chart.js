@@ -8,12 +8,14 @@ import {
   VictoryTheme,
   VictoryLabel,
   VictoryZoomContainer,
+  VictoryLine,
 } from "victory";
 
 const colorFun = "#84DFFF";
 const colorDiff = "#516BEB";
 
-function Chart({ average }) {
+function Chart({ average, chartFilters }) {
+  console.log("chart filters :", chartFilters);
   return (
     <div className="chartWrapper">
       <VictoryChart
@@ -22,11 +24,7 @@ function Chart({ average }) {
         domainPadding={{ x: 8, y: 5 }}
         theme={VictoryTheme.material}
         padding={{ left: 50, top: 0, right: 20, bottom: 80 }}
-        containerComponent={
-          <VictoryZoomContainer
-          // zoomDimension={["x", "y"]}
-          />
-        }
+        containerComponent={<VictoryZoomContainer />}
       >
         <VictoryAxis
           style={{
@@ -37,30 +35,48 @@ function Chart({ average }) {
 
         <VictoryAxis
           dependentAxis
-          tickValues={[1, 2, 3, 4, 5]}
-          tickCount={5}
+          tickValues={[0, 1, 2, 3, 4, 5]}
           style={{
             tickLabels: { fontSize: 6 },
           }}
         />
 
-        <VictoryGroup
-          offset={7}
-          style={{ data: { width: 6 } }}
-          //   colorScale={"warm"}
-        >
-          <VictoryBar
-            data={average}
-            x="task"
-            y="fun"
-            style={{ data: { fill: colorFun } }}
-          />
-          <VictoryBar
-            data={average}
-            x="task"
-            y="diff"
-            style={{ data: { fill: colorDiff } }}
-          />
+        <VictoryGroup offset={7} style={{ data: { width: 6 } }}>
+          {chartFilters.funChart ? (
+            chartFilters.barChart ? (
+              <VictoryBar
+                data={average}
+                x="task"
+                y="fun"
+                style={{ data: { fill: colorFun } }}
+              />
+            ) : (
+              <VictoryLine
+                data={average}
+                x="task"
+                y="fun"
+                style={{ data: { stroke: colorFun } }}
+              />
+            )
+          ) : null}
+
+          {chartFilters.diffChart ? (
+            chartFilters.barChart ? (
+              <VictoryBar
+                data={average}
+                x="task"
+                y="diff"
+                style={{ data: { fill: colorDiff } }}
+              />
+            ) : (
+              <VictoryLine
+                data={average}
+                x="task"
+                y="diff"
+                style={{ data: { stroke: colorDiff } }}
+              />
+            )
+          ) : null}
         </VictoryGroup>
       </VictoryChart>
     </div>

@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import MainOverview from "../components/mainView/MainOverview";
 import StudentOverview from "../components/mainView/StudentOverview";
 
-function Main({ students, average, handleAllSelectedStudents }) {
+function Main({ students, average, handleAllSelectedStudents, chartFilters }) {
   // create a path for each student
 
   const studentPages = students.map((student) => {
@@ -24,6 +24,7 @@ function Main({ students, average, handleAllSelectedStudents }) {
             student={student}
             chartData={assignments}
             handleAllSelectedStudents={handleAllSelectedStudents}
+            chartFilters={chartFilters}
           />
         }
       />
@@ -32,7 +33,10 @@ function Main({ students, average, handleAllSelectedStudents }) {
 
   return (
     <Routes>
-      <Route path="/" element={<MainOverview average={average} />} />
+      <Route
+        path="/"
+        element={<MainOverview average={average} chartFilters={chartFilters} />}
+      />
       {studentPages}
     </Routes>
   );
