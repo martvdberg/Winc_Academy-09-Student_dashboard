@@ -120,7 +120,6 @@ function App() {
   };
 
   const handleChangeChartCheckboxes = (event) => {
-    console.log(event.target.value);
     setChartFilters((prevState) => {
       let newState;
       if (
