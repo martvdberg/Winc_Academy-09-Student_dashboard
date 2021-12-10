@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import SelectSingleStudent from "../components/filterComponents/SelectSingleStudent";
 import SelectMultipleStudents from "../components/filterComponents/SelectMultipleStudents";
+import SelectChartFilters from "../components/filterComponents/SelectChartFIlters";
 
 function Filter({
   dataPerStudent,
   handleSubmitSelectedStudents,
   handleChangeStudentCheckbox,
-  handleResetSelectedStudents,
+  handleAllSelectedStudents,
 }) {
   const [showItems, setShowItems] = useState({
     StudentLinks: false,
@@ -33,7 +34,7 @@ function Filter({
   };
 
   return (
-    <section className="filterContainer">
+    <section className="filter">
       <SelectSingleStudent
         students={dataPerStudent}
         showItems={showItems}
@@ -45,9 +46,10 @@ function Filter({
         handleClickShowItems={handleClickShowItems}
         handleChangeStudentCheckbox={handleChangeStudentCheckbox}
         handleSubmitSelectedStudents={handleSubmitSelectedStudents}
-        handleResetSelectedStudents={handleResetSelectedStudents}
+        handleAllSelectedStudents={handleAllSelectedStudents}
       />
-      {/* <ChartFilter />  */}
+
+      <SelectChartFilters />
     </section>
   );
 }

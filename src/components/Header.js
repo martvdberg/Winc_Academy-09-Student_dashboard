@@ -1,22 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Header({ handleResetSelectedStudents }) {
+function Header({ handleAllSelectedStudents }) {
   return (
     <header className="header">
       <Link to="/" className="header__link">
         <h1
+          title="reset"
           className="header__link--top"
-          onClick={() => {
-            handleResetSelectedStudents();
+          onClick={(event) => {
+            handleAllSelectedStudents(event);
           }}
         >
           Student
         </h1>
         <h1
+          title="reset"
           className="header__link--bottom"
-          onClick={() => {
-            handleResetSelectedStudents();
+          onClick={(event) => {
+            handleAllSelectedStudents(event);
           }}
         >
           dashboard

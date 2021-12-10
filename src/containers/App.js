@@ -92,12 +92,13 @@ function App() {
     });
   };
 
-  const handleResetSelectedStudents = () => {
+  const handleAllSelectedStudents = (event) => {
+    const newCheckedStatus = event.target.title === "reset" ? false : true;
     const newState = dataPerStudent.map((student) => {
       return {
         details: {
           ...student.details,
-          checked: false,
+          checked: newCheckedStatus,
         },
         assignments: [...student.assignments],
       };
@@ -116,12 +117,12 @@ function App() {
   return (
     <Router>
       <div className="mainWrapper">
-        <Header handleResetSelectedStudents={handleResetSelectedStudents} />
+        <Header handleAllSelectedStudents={handleAllSelectedStudents} />
         <Filter
           dataPerStudent={dataPerStudent}
           handleChangeStudentCheckbox={handleChangeStudentCheckbox}
           handleSubmitSelectedStudents={handleSubmitSelectedStudents}
-          handleResetSelectedStudents={handleResetSelectedStudents}
+          handleAllSelectedStudents={handleAllSelectedStudents}
         />
         {loading ? (
           <h1 className="mainContainer">Loading...</h1>
@@ -129,7 +130,7 @@ function App() {
           <Main
             students={dataPerStudent}
             average={averagePerTask}
-            handleResetSelectedStudents={handleResetSelectedStudents}
+            handleAllSelectedStudents={handleAllSelectedStudents}
           />
         )}
       </div>

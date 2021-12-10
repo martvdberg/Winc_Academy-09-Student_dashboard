@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Chart from "./Chart";
 
-function StudentOverview({ student, chartData, handleResetSelectedStudents }) {
+function StudentOverview({ student, chartData, handleAllSelectedStudents }) {
   return (
     <section className="studentContainer">
       <h2>Student overview</h2>
@@ -21,15 +21,17 @@ function StudentOverview({ student, chartData, handleResetSelectedStudents }) {
         <span className="studentContainer__student--email">
           email: {student.details.email}
         </span>
-        <span
-          className="resetBtn"
-          id="reset"
-          onClick={() => {
-            handleResetSelectedStudents();
-          }}
-        >
-          <Link to={"/"}>= view all students =</Link>
-        </span>
+        <Link to={"/"}>
+          <span
+            className="resetBtn"
+            title="reset"
+            onClick={(event) => {
+              handleAllSelectedStudents(event);
+            }}
+          >
+            view all students
+          </span>
+        </Link>
       </section>
 
       <Chart average={chartData} />
