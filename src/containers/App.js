@@ -126,7 +126,11 @@ function App() {
         {loading ? (
           <h1 className="mainContainer">Loading...</h1>
         ) : (
-          <Main students={dataPerStudent} average={averagePerTask} />
+          <Main
+            students={dataPerStudent}
+            average={averagePerTask}
+            handleResetSelectedStudents={handleResetSelectedStudents}
+          />
         )}
       </div>
     </Router>

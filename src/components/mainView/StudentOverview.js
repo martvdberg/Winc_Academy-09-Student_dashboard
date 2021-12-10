@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Chart from "./Chart";
 
-function StudentOverview({ student, chartData }) {
+function StudentOverview({ student, chartData, handleResetSelectedStudents }) {
   return (
     <section className="studentContainer">
       <h2>Student overview</h2>
@@ -19,6 +20,15 @@ function StudentOverview({ student, chartData }) {
         </span>
         <span className="studentContainer__student--email">
           email: {student.details.email}
+        </span>
+        <span
+          className="resetBtn"
+          id="reset"
+          onClick={() => {
+            handleResetSelectedStudents();
+          }}
+        >
+          <Link to={"/"}>= view all students =</Link>
         </span>
       </section>
 
