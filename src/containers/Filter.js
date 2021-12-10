@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ChartFilter from "../components/chartFilter/ChartFilter";
 import SelectSingleStudent from "../components/filterComponents/SelectSingleStudent";
 import SelectMultipleStudents from "../components/filterComponents/SelectMultipleStudents";
 

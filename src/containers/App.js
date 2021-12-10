@@ -116,7 +116,7 @@ function App() {
   return (
     <Router>
       <div className="mainWrapper">
-        <Header />
+        <Header handleResetSelectedStudents={handleResetSelectedStudents} />
         <Filter
           dataPerStudent={dataPerStudent}
           handleChangeStudentCheckbox={handleChangeStudentCheckbox}
