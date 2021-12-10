@@ -1,14 +1,14 @@
 import React from "react";
 
-function StudentBig({ student, handleAllSelectedStudents }) {
+function StudentBig({ student }) {
   return (
     <div>
       <div className="imgWrapper">
-        <span>Image</span>
+        <img src={student.details.photo} alt="profilepicture" />
       </div>
       <div className="detailsWrapper">
         <span>{`${student.details.firstName} ${student.details.lastName}`}</span>
-        <span>`${student.details.age}`</span>
+        <span>{`${student.details.age}`}</span>
         <span>{`${student.details.email}`}</span>
       </div>
     </div>

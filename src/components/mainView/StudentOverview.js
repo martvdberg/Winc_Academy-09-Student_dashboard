@@ -17,15 +17,8 @@ function StudentOverview({
         student={student}
         handleAllSelectedStudents={handleAllSelectedStudents}
       />
-      <Link to={"/"} className="resetBtn">
-        <span
-          title="reset"
-          onClick={(event) => {
-            handleAllSelectedStudents(event);
-          }}
-        >
-          view all students
-        </span>
+      <Link to={"/"} className="backBtn">
+        <span title="back">Back to overview</span>
       </Link>
     </section>
   );

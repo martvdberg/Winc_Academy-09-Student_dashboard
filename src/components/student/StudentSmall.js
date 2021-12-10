@@ -7,9 +7,12 @@ function StudentSmall({ students }) {
   const studentElements = selectedStudents.map((student) => {
     return (
       <div>
-        <span>Image</span>
-
         <Link to={`/${student.details.firstName}`}>
+          <img
+            src={student.details.photo}
+            alt="profilepicture"
+            height={"75px"}
+          />
           {`${student.details.firstName} ${student.details.lastName}`}
         </Link>
       </div>

@@ -1,3 +1,5 @@
+import { extraData, emailDomain } from "./assets/extraStudentDetails";
+
 export const csvToArray = (str, delimiter = ",") => {
   // set new headers and extract rows tarting after the first line break
   const headerValues = ["name", "task", "diff", "fun"];
@@ -15,17 +17,38 @@ export const csvToArray = (str, delimiter = ",") => {
   return completeObject;
 };
 
-export const createObjectPerPerson = (object) =>
-  object.reduce((students, current) => {
+const getLastName = () => {
+  const randomNumber = Math.floor(Math.random() * extraData.length);
+  return extraData[randomNumber].name.last;
+};
+const getProfilePicture = () => {
+  const randomNumber = Math.floor(Math.random() * extraData.length);
+  return extraData[randomNumber].picture.large;
+};
+const getAge = () => {
+  const randomAge = Math.floor(Math.random() * 65);
+  if (randomAge > 18 && randomAge < 65) {
+    return randomAge;
+  } else {
+    getAge();
+  }
+};
+const getEmail = (firstName) => {
+  const randomNumber = Math.floor(Math.random() * emailDomain.length);
+  return `${firstName}@${emailDomain[randomNumber].emailDomain}`;
+};
+
+export const createObjectPerPerson = (object) => {
+  const dataPerStudent = object.reduce((students, current, index) => {
     // create a new student object if student name does not exist yet
     if (!students.some((e) => e.details.firstName === current.name)) {
       const newPerson = {
         details: {
           firstName: current.name,
-          lastName: "pick a random name",
-          age: "random age",
-          email: "generate from first and lastname",
-          photo: "random photo url",
+          lastName: getLastName(),
+          age: getAge(),
+          email: getEmail(current.name),
+          photo: getProfilePicture(),
           id: generateId(),
           checked: false,
         },
@@ -53,6 +76,10 @@ export const createObjectPerPerson = (object) =>
     }
     return students;
   }, []);
+  console.log(dataPerStudent);
+
+  return dataPerStudent;
+};
 
 export const sortByTask = (studentsData) =>
   studentsData[0].assignments.map((e) => {
