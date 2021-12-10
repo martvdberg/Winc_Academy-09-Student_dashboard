@@ -1,10 +1,9 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-.mainWrapper {
+.wrapper {
   display: grid;
   grid-template-columns: auto 150px 85% auto;
   grid-template-rows: 150px 1fr;
@@ -16,29 +15,11 @@
   text-align: center;
 }
 
-.filterContainer {
+.filter {
   grid-area: F;
 }
 
-.studentFilter {
-  display: flex;
-  flex-direction: column;
-  &__links {
-    display: flex;
-    flex-direction: column;
-    background-color: green;
-  }
-  &__checkboxes {
-    background-color: green;
-  }
-  &__checkboxes--form {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-.mainContainer,
-.studentContainer {
+.main {
   grid-area: M;
 }
 

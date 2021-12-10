@@ -26,11 +26,12 @@ const getProfilePicture = () => {
   return extraData[randomNumber].picture.large;
 };
 const getAge = () => {
-  const randomAge = Math.floor(Math.random() * 65);
-  if (randomAge > 18 && randomAge < 65) {
-    return randomAge;
-  } else {
-    getAge();
+  let age;
+  while (true) {
+    age = Math.floor(Math.random() * 65);
+    if (age > 18) {
+      return age;
+    }
   }
 };
 const getEmail = (firstName) => {
@@ -76,8 +77,6 @@ export const createObjectPerPerson = (object) => {
     }
     return students;
   }, []);
-  console.log(dataPerStudent);
-
   return dataPerStudent;
 };
 
@@ -91,7 +90,6 @@ export const sortByTask = (studentsData) =>
   });
 
 export const getSelectedStudents = (studentsData) => {
-  console.log(studentsData);
   if (studentsData !== undefined) {
     return studentsData.filter((student) => student.details.checked);
   }

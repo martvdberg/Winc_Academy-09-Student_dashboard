@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 function Header({ handleAllSelectedStudents }) {
   return (
     <header className="header">
-      <Link to="/" className="header__link">
+      <Link to="/" className="header__text">
         <h1
           title="reset"
-          className="header__link--top"
+          className="header__text--top"
           onClick={(event) => {
             handleAllSelectedStudents(event);
           }}
@@ -16,7 +16,7 @@ function Header({ handleAllSelectedStudents }) {
         </h1>
         <h1
           title="reset"
-          className="header__link--bottom"
+          className="header__text--bottom"
           onClick={(event) => {
             handleAllSelectedStudents(event);
           }}

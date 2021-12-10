@@ -156,7 +156,7 @@ function App() {
 
   return (
     <Router>
-      <div className="mainWrapper">
+      <div className="wrapper">
         <Header handleAllSelectedStudents={handleAllSelectedStudents} />
         <Filter
           dataPerStudent={dataPerStudent}
@@ -166,17 +166,15 @@ function App() {
           handleChangeChartCheckboxes={handleChangeChartCheckboxes}
           chartFilters={chartFilters}
         />
-        {loading ? (
-          <h1 className="mainContainer">Loading...</h1>
-        ) : (
-          <Main
-            students={dataPerStudent}
-            average={averagePerTask}
-            handleAllSelectedStudents={handleAllSelectedStudents}
-            chartFilters={chartFilters}
-            allSelectedStudents={allSelectedStudents}
-          />
-        )}
+
+        <Main
+          students={dataPerStudent}
+          average={averagePerTask}
+          handleAllSelectedStudents={handleAllSelectedStudents}
+          chartFilters={chartFilters}
+          allSelectedStudents={allSelectedStudents}
+          loading={loading}
+        />
       </div>
     </Router>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import MainOverview from "../components/mainView/MainOverview";
 import StudentOverview from "../components/mainView/StudentOverview";
+import { generateId } from "../util";
 
 function Main({
   students,
@@ -9,6 +10,7 @@ function Main({
   handleAllSelectedStudents,
   chartFilters,
   allSelectedStudents,
+  loading,
 }) {
   // create a path for each student
 
@@ -25,6 +27,7 @@ function Main({
     return (
       <Route
         path={`/${student.details.firstName}`}
+        key={generateId()}
         element={
           <StudentOverview
             student={student}
@@ -38,20 +41,22 @@ function Main({
   });
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <MainOverview
-            average={average}
-            chartFilters={chartFilters}
-            students={allSelectedStudents}
-            // allSelectedStudents={allSelectedStudents}
-          />
-        }
-      />
-      {studentPages}
-    </Routes>
+    <section className="main">
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <MainOverview
+              average={average}
+              chartFilters={chartFilters}
+              students={allSelectedStudents}
+              loading={loading}
+            />
+          }
+        />
+        {studentPages}
+      </Routes>
+    </section>
   );
 }
 

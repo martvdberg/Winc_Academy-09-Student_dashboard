@@ -6,7 +6,7 @@ function StudentSmall({ students }) {
   const selectedStudents = getSelectedStudents(students);
   const studentElements = selectedStudents.map((student) => {
     return (
-      <div>
+      <div className="main__selectedStudents--singleStudent">
         <Link to={`/${student.details.firstName}`}>
           <img
             src={student.details.photo}
@@ -19,7 +19,7 @@ function StudentSmall({ students }) {
     );
   });
 
-  return <div>{studentElements}</div>;
+  return <div className="main__selectedStudents">{studentElements}</div>;
 }
 
 export default StudentSmall;

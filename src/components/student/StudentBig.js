@@ -2,14 +2,14 @@ import React from "react";
 
 function StudentBig({ student }) {
   return (
-    <div>
-      <div className="imgWrapper">
+    <div className="student">
+      <div className="student__img">
         <img src={student.details.photo} alt="profilepicture" />
       </div>
-      <div className="detailsWrapper">
-        <span>{`${student.details.firstName} ${student.details.lastName}`}</span>
-        <span>{`${student.details.age}`}</span>
-        <span>{`${student.details.email}`}</span>
+      <div className="student__details">
+        <span className="student__details--name">{`${student.details.firstName} ${student.details.lastName}`}</span>
+        <span className="student__details--age">{`Age: ${student.details.age}`}</span>
+        <span className="student__details--email">{`${student.details.email}`}</span>
       </div>
     </div>
   );

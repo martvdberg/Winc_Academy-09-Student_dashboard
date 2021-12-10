@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { generateId } from "../../util";
+
 function SelectMultipleStudents({
   students,
   handleClickShowItems,
@@ -10,7 +12,7 @@ function SelectMultipleStudents({
 }) {
   const StudentFilterCheckbox = students.map((student) => {
     return (
-      <label htmlFor={student.details.id}>
+      <label htmlFor={student.details.id} key={generateId()}>
         <input
           type="checkbox"
           id={student.details.id}
@@ -33,13 +35,13 @@ function SelectMultipleStudents({
         Select multiple student
       </span>
       <div
-        className={`studentFilter__checkboxes ${
+        className={`filter__multipleStudents--checkboxes ${
           showItems.StudentCheckboxes ? null : "hidden"
         }`}
         id="studentCheckboxes"
       >
         <span
-          className="filter-btn filter-btn--selectAll"
+          className="filter__btn filter__btn--selectAll"
           title="selectAll"
           onClick={(event) => {
             handleAllSelectedStudents(event);
@@ -49,7 +51,7 @@ function SelectMultipleStudents({
         </span>
         {StudentFilterCheckbox}
         <span
-          className="filter-btn filter-btn--reset"
+          className="filter__btn filter__btn--reset"
           title="reset"
           onClick={(event) => {
             handleAllSelectedStudents(event);

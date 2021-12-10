@@ -11,7 +11,7 @@ function StudentOverview({
   handleAllSelectedStudents,
 }) {
   return (
-    <section className="studentContainer">
+    <>
       <Chart average={chartData} chartFilters={chartFilters} />
       <StudentBig
         student={student}
@@ -20,7 +20,7 @@ function StudentOverview({
       <Link to={"/"} className="backBtn">
         <span title="back">Back to overview</span>
       </Link>
-    </section>
+    </>
   );
 }
 

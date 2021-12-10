@@ -15,9 +15,8 @@ const colorFun = "#84DFFF";
 const colorDiff = "#516BEB";
 
 function Chart({ average, chartFilters }) {
-  console.log("chart filters :", chartFilters);
   return (
-    <div className="chartWrapper">
+    <div className="main__chart">
       <VictoryChart
         height={350}
         width={1100}
