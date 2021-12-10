@@ -102,9 +102,10 @@ function App() {
         assignments: [...student.assignments],
       };
     });
+    console.log(newState);
+    const newAverage = calcAverage(newState);
     setDataPerStudent(newState);
-    // const newAverage = calcAverage(dataPerStudent);
-    // setAveragePerTask(newAverage);
+    setAveragePerTask(newAverage);
   };
 
   const handleSubmitSelectedStudents = () => {
