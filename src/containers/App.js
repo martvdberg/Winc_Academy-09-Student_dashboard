@@ -16,6 +16,7 @@ import "../styles/app.css";
 function App() {
   const [dataPerStudent, setDataPerStudent] = useState([]);
   const [averagePerTask, setAveragePerTask] = useState([]);
+  const [allSelectedStudents, setAllSelectedStudents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [chartFilters, setChartFilters] = useState({
     funChart: true,
@@ -110,13 +111,17 @@ function App() {
       };
     });
     const newAverage = calcAverage(newState);
+    const selectedStudents = getSelectedStudents(newState);
     setDataPerStudent(newState);
     setAveragePerTask(newAverage);
+    setAllSelectedStudents(selectedStudents);
   };
 
   const handleSubmitSelectedStudents = () => {
     const newAverage = calcAverage(dataPerStudent);
+    const selectedStudents = getSelectedStudents(dataPerStudent);
     setAveragePerTask(newAverage);
+    setAllSelectedStudents(selectedStudents);
   };
 
   const handleChangeChartCheckboxes = (event) => {
@@ -169,6 +174,7 @@ function App() {
             average={averagePerTask}
             handleAllSelectedStudents={handleAllSelectedStudents}
             chartFilters={chartFilters}
+            allSelectedStudents={allSelectedStudents}
           />
         )}
       </div>

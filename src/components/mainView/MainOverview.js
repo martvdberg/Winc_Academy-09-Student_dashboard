@@ -1,11 +1,12 @@
 import React from "react";
 import Chart from "./Chart";
+import StudentSmall from "../student/StudentSmall";
 
-function MainOverview({ average, chartFilters }) {
+function MainOverview({ average, chartFilters, students }) {
   return (
     <section className="mainContainer">
-      <h2>Main overview</h2>
       <Chart average={average} chartFilters={chartFilters} />
+      <StudentSmall students={students} />
     </section>
   );
 }

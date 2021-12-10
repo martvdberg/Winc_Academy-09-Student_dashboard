@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import StudentBig from "../student/StudentBig";
 import Chart from "./Chart";
 
 function StudentOverview({
@@ -10,36 +12,21 @@ function StudentOverview({
 }) {
   return (
     <section className="studentContainer">
-      <h2>Student overview</h2>
-      <section className="studentContainer__student">
-        <img
-          src={student.details.photo}
-          className="studentContainer__student--photo"
-          alt="==student=="
-        />
-        <span className="studentContainer__student--name">
-          Name: {`${student.details.firstName} ${student.details.lastName}`}
-        </span>
-        <span className="studentContainer__student--age">
-          Age: {student.details.age}
-        </span>
-        <span className="studentContainer__student--email">
-          email: {student.details.email}
-        </span>
-        <Link to={"/"}>
-          <span
-            className="resetBtn"
-            title="reset"
-            onClick={(event) => {
-              handleAllSelectedStudents(event);
-            }}
-          >
-            view all students
-          </span>
-        </Link>
-      </section>
-
       <Chart average={chartData} chartFilters={chartFilters} />
+      <StudentBig
+        student={student}
+        handleAllSelectedStudents={handleAllSelectedStudents}
+      />
+      <Link to={"/"} className="resetBtn">
+        <span
+          title="reset"
+          onClick={(event) => {
+            handleAllSelectedStudents(event);
+          }}
+        >
+          view all students
+        </span>
+      </Link>
     </section>
   );
 }

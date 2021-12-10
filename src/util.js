@@ -63,7 +63,11 @@ export const sortByTask = (studentsData) =>
     };
   });
 
-export const getSelectedStudents = (studentsData) =>
-  studentsData.filter((student) => student.details.checked);
+export const getSelectedStudents = (studentsData) => {
+  console.log(studentsData);
+  if (studentsData !== undefined) {
+    return studentsData.filter((student) => student.details.checked);
+  }
+};
 
 export const generateId = () => `${Math.floor(Math.random() * 999999999)}`;
