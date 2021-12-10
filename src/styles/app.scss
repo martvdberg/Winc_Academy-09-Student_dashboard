@@ -18,32 +18,17 @@
 
 .filterContainer {
   grid-area: F;
-  align-self: center;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 80px 200px;
-  text-align: start;
 }
 
 .studentFilter {
   display: flex;
   flex-direction: column;
   &__links {
-    padding-left: 50px;
     display: flex;
     flex-direction: column;
-
-    position: relative;
-    z-index: 10;
-    // transform: translateY(10%);
-
     background-color: green;
   }
   &__checkboxes {
-    padding-left: 50px;
-
-    transform: translateY(-90%);
-    z-index: 10;
     background-color: green;
   }
   &__checkboxes--form {
@@ -58,5 +43,5 @@
 }
 
 .hidden {
-  transform: translateX(-500px);
+  display: none;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import StudentFilterItem from "./StudentFilterItem";
-import { generateId } from "../../util";
+import { generateId } from "../util";
 
 function StudentFilter({
   students,

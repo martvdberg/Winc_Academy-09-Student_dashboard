@@ -19,11 +19,6 @@
 
 .filterContainer {
   grid-area: F;
-  align-self: center;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 80px 200px;
-  text-align: start;
 }
 
 .studentFilter {
@@ -36,7 +31,6 @@
           flex-direction: column;
 }
 .studentFilter__links {
-  padding-left: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,15 +38,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  position: relative;
-  z-index: 10;
   background-color: green;
 }
 .studentFilter__checkboxes {
-  padding-left: 50px;
-  -webkit-transform: translateY(-90%);
-          transform: translateY(-90%);
-  z-index: 10;
   background-color: green;
 }
 .studentFilter__checkboxes--form {
@@ -71,6 +59,5 @@
 }
 
 .hidden {
-  -webkit-transform: translateX(-500px);
-          transform: translateX(-500px);
+  display: none;
 }/*# sourceMappingURL=app.css.map */

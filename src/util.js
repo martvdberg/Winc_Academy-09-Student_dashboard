@@ -66,7 +66,4 @@ export const sortByTask = (studentsData) =>
 export const getSelectedStudents = (studentsData) =>
   studentsData.filter((student) => student.details.checked);
 
-export const generateId = () =>
-  `${Math.floor(Math.random() * 999999999)}-${Math.floor(
-    Math.random() * 999999999
-  )}`;
+export const generateId = () => `${Math.floor(Math.random() * 999999999)}`;

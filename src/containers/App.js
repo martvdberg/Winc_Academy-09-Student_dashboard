@@ -92,11 +92,24 @@ function App() {
     });
   };
 
-  const handleSubmit = (event, students) => {
-    event.preventDefault();
-    const newAverage = calcAverage(students);
+  const handleResetSelectedStudents = () => {
+    const newState = dataPerStudent.map((student) => {
+      return {
+        details: {
+          ...student.details,
+          checked: false,
+        },
+        assignments: [...student.assignments],
+      };
+    });
+    setDataPerStudent(newState);
+    // const newAverage = calcAverage(dataPerStudent);
+    // setAveragePerTask(newAverage);
+  };
+
+  const handleSubmitSelectedStudents = () => {
+    const newAverage = calcAverage(dataPerStudent);
     setAveragePerTask(newAverage);
-    setDataPerStudent(students);
   };
 
   return (
@@ -106,7 +119,8 @@ function App() {
         <Filter
           dataPerStudent={dataPerStudent}
           handleChangeStudentCheckbox={handleChangeStudentCheckbox}
-          handleSubmit={handleSubmit}
+          handleSubmitSelectedStudents={handleSubmitSelectedStudents}
+          handleResetSelectedStudents={handleResetSelectedStudents}
         />
         {loading ? (
           <h1 className="mainContainer">Loading...</h1>
