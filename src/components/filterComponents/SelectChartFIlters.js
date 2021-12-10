@@ -9,7 +9,7 @@ function SelectChartFilters({
   return (
     <div className="filter__chart">
       <span
-        className="filter__btn"
+        className="btn filter__btn"
         id="showChartFilters"
         onClick={(event) => handleClickShowItems(event)}
       >

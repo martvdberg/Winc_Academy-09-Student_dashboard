@@ -17,7 +17,7 @@ function StudentOverview({
         student={student}
         handleAllSelectedStudents={handleAllSelectedStudents}
       />
-      <Link to={"/"} className="backBtn">
+      <Link to={"/"} className="btn backBtn">
         <span title="back">Back to overview</span>
       </Link>
     </>

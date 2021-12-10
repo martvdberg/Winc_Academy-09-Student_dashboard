@@ -14,7 +14,7 @@ function SelectSingleStudent({ students, handleClickShowItems, showItems }) {
   return (
     <div className="filter__singleStudent">
       <span
-        className="filter__btn"
+        className="btn filter__btn"
         id="showStudentLinks"
         onClick={(event) => handleClickShowItems(event)}
       >

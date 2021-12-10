@@ -28,7 +28,7 @@ function SelectMultipleStudents({
   return (
     <div className="filter__multipleStudents">
       <span
-        className="filter--btn"
+        className="btn filter--btn"
         id="showStudentCheckboxes"
         onClick={(event) => handleClickShowItems(event)}
       >
@@ -41,7 +41,7 @@ function SelectMultipleStudents({
         id="studentCheckboxes"
       >
         <span
-          className="filter__btn filter__btn--selectAll"
+          className="btn filter__btn filter__btn--selectAll"
           title="selectAll"
           onClick={(event) => {
             handleAllSelectedStudents(event);
@@ -51,7 +51,7 @@ function SelectMultipleStudents({
         </span>
         {StudentFilterCheckbox}
         <span
-          className="filter__btn filter__btn--reset"
+          className="btn filter__btn filter__btn--reset"
           title="reset"
           onClick={(event) => {
             handleAllSelectedStudents(event);
@@ -60,7 +60,7 @@ function SelectMultipleStudents({
           Reset
         </span>
         <span
-          className="filter-btn filter-btn--apply"
+          className="btn filter-btn filter-btn--apply"
           onClick={(event) => {
             handleClickShowItems(event);
             handleSubmitSelectedStudents();
