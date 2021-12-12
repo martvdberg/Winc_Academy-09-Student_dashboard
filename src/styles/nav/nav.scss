@@ -1,0 +1,118 @@
+.nav {
+  background-color: #2f5d62;
+  color: #dfeeea;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 7%;
+  z-index: 10;
+
+  &__header {
+    text-align: center;
+    display: inline-block;
+    height: 100%;
+    font-size: 1em;
+    font-weight: 500;
+    width: 170px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__list {
+    background-color: #2f5d62;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 18px 17px 22px -11px rgba(0, 0, 0, 0.78);
+    border-bottom-right-radius: 0.5em;
+  }
+
+  &__btnWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px 0;
+  }
+
+  &__btn {
+    border: 1px solid #dfeeea;
+    border-radius: 0.2em;
+    width: fit-content;
+    padding: 5px;
+    font-size: 0.9em;
+
+    &:hover {
+      background-color: #dfeeea;
+      color: #2f5d62;
+      cursor: pointer;
+      box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
+    }
+    &--all {
+      margin: auto 5px 5px auto;
+    }
+    &--reset {
+      &:hover {
+        color: rgba(255, 0, 0, 0.527);
+      }
+    }
+    &--apply {
+      &:hover {
+        color: rgba(0, 255, 0, 0.747);
+      }
+    }
+    &--link {
+      color: inherit;
+    }
+  }
+}
+
+.studentList {
+  padding: 20px;
+  &__name {
+    margin: 5px 0;
+    padding: 3px;
+    &:hover {
+      background-color: #dfeeea;
+      color: #2f5d62;
+      border-bottom-right-radius: 0.5em;
+      box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
+    }
+
+    &--checkbox {
+      margin-right: 5px;
+    }
+  }
+  &__link {
+    color: inherit;
+  }
+}
+
+.chartList {
+  text-align: center;
+  padding-bottom: 15px;
+  &__header {
+    display: block;
+    font-size: 1em;
+    font-weight: 500;
+
+    padding: 15px;
+    margin: 5px 0 0 0;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__showGraph--fun,
+  &__showGraph--diff,
+  &__typeGraph--text {
+    margin: 5px;
+    &:hover {
+      background-color: #dfeeea;
+      color: #2f5d62;
+      border-bottom-right-radius: 0.5em;
+      box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
+    }
+  }
+}

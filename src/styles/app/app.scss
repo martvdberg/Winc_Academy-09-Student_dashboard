@@ -1,0 +1,39 @@
+// general styling
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #a7c4bc;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Page layout
+.app {
+  display: grid;
+  grid-template-columns: auto 95% auto;
+  grid-template-rows: 100px 25px 1fr;
+  grid-template-areas: "H H H " "N N N" ". M .";
+}
+
+.header {
+  grid-area: H;
+}
+
+.nav {
+  grid-area: N;
+}
+
+.main {
+  grid-area: M;
+}
+
+.hidden {
+  display: none;
+}

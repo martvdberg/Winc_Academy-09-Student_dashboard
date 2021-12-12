@@ -5,24 +5,28 @@ import { generateId } from "../../util";
 function SelectSingleStudent({ students, handleClickShowItems, showItems }) {
   const studentFilterLink = students.map((student) => {
     return (
-      <Link to={`/${student.details.firstName}`} key={generateId()}>
-        <span>{`${student.details.firstName}`}</span>
+      <Link
+        to={`/${student.details.firstName}`}
+        key={generateId()}
+        className="studentList__name studentList__link"
+      >
+        {`${student.details.firstName}`}
       </Link>
     );
   });
 
   return (
-    <div className="filter__singleStudent">
-      <span
-        className="btn filter__btn"
+    <div className="nav__single">
+      <h2
+        className="nav__header nav__single--header"
         id="showStudentLinks"
         onClick={(event) => handleClickShowItems(event)}
       >
-        Select single student
-      </span>
+        Single student
+      </h2>
       <div
-        className={`filter__singleStudent--links ${
-          showItems.StudentLinks ? null : "hidden"
+        className={`nav__list nav__single--list studentList ${
+          showItems.StudentLinks ? "" : "hidden"
         }`}
         id="studentLinks"
         onClick={(event) => handleClickShowItems(event)}

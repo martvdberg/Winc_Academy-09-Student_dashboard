@@ -7,51 +7,61 @@ function SelectChartFilters({
   chartFilters,
 }) {
   return (
-    <div className="filter__chart">
-      <span
-        className="btn filter__btn"
+    <div className="nav__chart">
+      <h2
+        className="nav__header nav__chart--header"
         id="showChartFilters"
         onClick={(event) => handleClickShowItems(event)}
       >
-        Select chart filters
-      </span>
+        Chart filter
+      </h2>
       <div
-        className={`filter__chart--filterOptions ${
+        className={`nav__list nav__chart--list chartList ${
           showItems.ChartFilters ? null : "hidden"
         }`}
       >
-        <div className="filter__chart--checkboxes">
-          <label htmlFor="filterFun">
+        <div className="chartList__showGraph">
+          <h3 className="chartList__header chartList__showGraph--header">
+            Choose data
+          </h3>
+          <div className="chartList__wrapper">
             <input
               type="checkbox"
               id="filterFun"
+              className="chartList__showGraph--checkbox"
               value="funChart"
               checked={chartFilters.funChart}
               onChange={(event) => {
                 handleChangeChartCheckboxes(event);
               }}
             />
-            Fun
-          </label>
-          <label htmlFor="filterDiff">
             <input
               type="checkbox"
               id="filterDiff"
+              className="chartList__showGraph--checkbox"
               value="diffChart"
               checked={chartFilters.diffChart}
               onChange={(event) => {
                 handleChangeChartCheckboxes(event);
               }}
             />
-            Difficult
-          </label>
+            <label htmlFor="filterFun" className="chartList__showGraph--fun">
+              Fun
+            </label>
+            <label htmlFor="filterDiff" className="chartList__showGraph--diff">
+              Difficult
+            </label>
+          </div>
         </div>
-        <div className="filter__chart--graphType">
-          <p>Graph type</p>
-          <label htmlFor="lineGraph">
+        <div className="chartList__typeGraph">
+          <h3 className="chartList__header chartList__typeGraph--header">
+            Graph type
+          </h3>
+          <div className="chartList__wrapper">
             <input
               type="radio"
               id="lineGraph"
+              className="chartList__typeGraph--option"
               name="graphType"
               value="lineGraph"
               checked={chartFilters.lineGraph}
@@ -60,12 +70,10 @@ function SelectChartFilters({
                 handleChangeChartCheckboxes(event);
               }}
             />
-            Line
-          </label>
-          <label htmlFor="barChart">
             <input
               type="radio"
               id="barChart"
+              className="chartList__typeGraph--option"
               name="graphType"
               value="barChart"
               checked={chartFilters.barChart}
@@ -74,8 +82,13 @@ function SelectChartFilters({
                 handleChangeChartCheckboxes(event);
               }}
             />
-            Bars
-          </label>
+            <label htmlFor="lineGraph" className="chartList__typeGraph--text">
+              Line
+            </label>
+            <label htmlFor="barChart" className="chartList__typeGraph--text">
+              Bars
+            </label>
+          </div>
         </div>
       </div>
     </div>

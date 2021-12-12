@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import SelectSingleStudent from "../components/filterComponents/SelectSingleStudent";
-import SelectMultipleStudents from "../components/filterComponents/SelectMultipleStudents";
-import SelectChartFilters from "../components/filterComponents/SelectChartFIlters";
+import SelectSingleStudent from "../components/navComponents/SelectSingleStudent";
+import SelectMultipleStudents from "../components/navComponents/SelectMultipleStudents";
+import SelectChartFilters from "../components/navComponents/SelectChartFIlters";
+import "../styles/nav/nav.css";
 
-function Filter({
+function Navigation({
   dataPerStudent,
   handleSubmitSelectedStudents,
   handleChangeStudentCheckbox,
@@ -40,7 +41,7 @@ function Filter({
   };
 
   return (
-    <section className="filter">
+    <nav className="nav">
       <SelectSingleStudent
         students={dataPerStudent}
         showItems={showItems}
@@ -61,8 +62,8 @@ function Filter({
         handleChangeChartCheckboxes={handleChangeChartCheckboxes}
         chartFilters={chartFilters}
       />
-    </section>
+    </nav>
   );
 }
 
-export default Filter;
+export default Navigation;

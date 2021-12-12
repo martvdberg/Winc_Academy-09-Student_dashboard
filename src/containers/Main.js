@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import MainOverview from "../components/mainView/MainOverview";
 import StudentOverview from "../components/mainView/StudentOverview";
 import { generateId } from "../util";
+import "../styles/main/main.css";
 
 function Main({
   students,

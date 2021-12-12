@@ -6,7 +6,7 @@ function MainOverview({ average, chartFilters, students, loading }) {
   return (
     <>
       {loading ? (
-        <h1 className="main__loading">Loading...</h1>
+        <h2 className="main__loading">Loading...</h2>
       ) : (
         <>
           <Chart average={average} chartFilters={chartFilters} />

@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import Header from "../components/Header";
 import Main from "./Main";
-import Filter from "./Filter";
+import Navigation from "./Navigation";
 import {
   csvToArray,
   createObjectPerPerson,
@@ -11,7 +11,7 @@ import {
   getSelectedStudents,
 } from "../util";
 
-import "../styles/app.css";
+import "../styles/app/app.css";
 
 function App() {
   const [dataPerStudent, setDataPerStudent] = useState([]);
@@ -156,9 +156,9 @@ function App() {
 
   return (
     <Router>
-      <div className="wrapper">
+      <div className="app">
         <Header handleAllSelectedStudents={handleAllSelectedStudents} />
-        <Filter
+        <Navigation
           dataPerStudent={dataPerStudent}
           handleChangeStudentCheckbox={handleChangeStudentCheckbox}
           handleSubmitSelectedStudents={handleSubmitSelectedStudents}

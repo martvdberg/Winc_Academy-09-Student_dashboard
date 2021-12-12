@@ -1,0 +1,14 @@
+.header {
+  background-color: #2f5d62;
+  text-align: center;
+  font-size: 1.2em;
+  padding-top: 6px;
+  &__text {
+    color: #dfeeea;
+    letter-spacing: 2.1em;
+
+    &--bottom {
+      line-height: 0.8em;
+    }
+  }
+}

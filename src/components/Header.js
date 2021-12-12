@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "../styles/header/header.css";
+
 function Header({ handleAllSelectedStudents }) {
   return (
     <header className="header">
-      <Link to="/" className="header__text">
+      <Link to="/" className="header__text header__link">
         <h1
           title="reset"
           className="header__text--top"
