@@ -91,17 +91,69 @@ function SelectChartFilters({
             </label>
           </div>
         </div>
-        <span
-          className={`chartList__showTable ${
-            chartFilters.table ? "selected" : ""
-          }`}
-          title="table"
-          onClick={(event) => {
-            handleChangeChartCheckboxes(event);
-          }}
-        >
-          Show table
-        </span>
+        <div className="chartList__sortTask">
+          <h3 className="chartList__header chartList__sortTask--header">
+            Sort tasks
+          </h3>
+          <div className="chartList__wrapper">
+            <input
+              type="radio"
+              id="sortFun"
+              className="chartList__sortTask--option"
+              name="sortTask"
+              value="sortFun"
+              // checked={chartFilters.lineGraph}
+              onChange={() => {}}
+              onClick={(event) => {
+                handleChangeChartCheckboxes(event);
+              }}
+            />
+            <input
+              type="radio"
+              id="sortDiff"
+              className="chartList__sortTask--option"
+              name="sortTask"
+              value="sortDiff"
+              // checked={chartFilters.barChart}
+              onChange={() => {}}
+              onClick={(event) => {
+                handleChangeChartCheckboxes(event);
+              }}
+            />
+            <input
+              type="radio"
+              id="sortNone"
+              className="chartList__sortTask--option"
+              name="sortTask"
+              value="sortNone"
+              // checked={chartFilters.barChart}
+              onChange={() => {}}
+              onClick={(event) => {
+                handleChangeChartCheckboxes(event);
+              }}
+            />
+            <label htmlFor="sortFun" className="sortTask--text">
+              Fun
+            </label>
+            <label htmlFor="sortDiff" className="chartList__sortTask--text">
+              Difficult
+            </label>
+            <label htmlFor="sortNone" className="sortTask--text">
+              None
+            </label>
+          </div>
+        </div>
+        <div className="chartList__showTable">
+          <span
+            className={`${chartFilters.table ? "selected" : ""}`}
+            title="table"
+            onClick={(event) => {
+              handleChangeChartCheckboxes(event);
+            }}
+          >
+            Show table
+          </span>
+        </div>
       </div>
     </div>
   );

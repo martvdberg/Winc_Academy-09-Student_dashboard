@@ -9,6 +9,7 @@ import {
   createObjectPerPerson,
   sortByTask,
   getSelectedStudents,
+  sortAssignmentByGrade,
 } from "../util";
 
 import "../styles/app/app.css";
@@ -165,6 +166,8 @@ function App() {
       return newState;
     });
   };
+
+  // sortAssignmentByGrade(averagePerTask, "diff");
 
   return (
     <Router>

@@ -104,3 +104,11 @@ export const getSelectedStudents = (studentsData) => {
 };
 
 export const generateId = () => `${Math.floor(Math.random() * 999999999)}`;
+
+// sort assignments by fun or diff
+export const sortAssignmentByGrade = (averagePerTask, filterOption) => {
+  const sortedAssignments = averagePerTask.sort((a, b) =>
+    a[filterOption] > b[filterOption] ? 1 : -1
+  );
+  console.log(sortedAssignments);
+};
