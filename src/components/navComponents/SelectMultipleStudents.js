@@ -9,8 +9,6 @@ function SelectMultipleStudents({
   handleChangeStudentCheckbox,
   showItems,
   handleSubmitSelectedStudents,
-  selectAllStatus,
-  handleSelectAllState,
   handleAllSelectedStudents,
 }) {
   const StudentFilterCheckbox = students.map((student) => {
@@ -50,10 +48,9 @@ function SelectMultipleStudents({
       >
         <span
           className="nav__btn nav__btn--all studentList__btn"
-          title={selectAllStatus ? "selectAll" : "reset"}
+          title="selectAll"
           onClick={(event) => {
             handleAllSelectedStudents(event);
-            handleSelectAllState();
           }}
         >
           select all

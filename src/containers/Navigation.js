@@ -18,8 +18,6 @@ function Navigation({
     ChartFilters: false,
   });
 
-  const [selectAllStatus, setSelectAllStatus] = useState(false);
-
   const handleMouseOverShowItems = (event) => {
     const targetElement = event.target.id.slice(4);
     if (
@@ -43,9 +41,6 @@ function Navigation({
       ChartFilters: false,
     });
   };
-  const handleSelectAllState = () => {
-    setSelectAllStatus(!selectAllStatus);
-  };
 
   return (
     <nav className="nav">
@@ -62,8 +57,6 @@ function Navigation({
         handleMouseOutHideItems={handleMouseOutHideItems}
         handleChangeStudentCheckbox={handleChangeStudentCheckbox}
         handleSubmitSelectedStudents={handleSubmitSelectedStudents}
-        handleSelectAllState={handleSelectAllState}
-        selectAllStatus={selectAllStatus}
         handleAllSelectedStudents={handleAllSelectedStudents}
       />
 
