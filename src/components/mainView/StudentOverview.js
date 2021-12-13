@@ -11,14 +11,15 @@ function StudentOverview({
   chartFilters,
   handleAllSelectedStudents,
 }) {
+  console.log(chartData);
   return (
     <>
-      <Chart average={chartData} chartFilters={chartFilters} />
+      <Chart chartData={chartData} chartFilters={chartFilters} />
       <StudentBig
         student={student}
         handleAllSelectedStudents={handleAllSelectedStudents}
       />
-      {chartFilters.table ? <Table average={chartData} /> : null}
+      {chartFilters.table ? <Table chartData={chartData} /> : null}
 
       <Link to={"/"} className="main__btn main__btn--back">
         Back to overview

@@ -110,5 +110,5 @@ export const sortAssignmentByGrade = (averagePerTask, filterOption) => {
   const sortedAssignments = averagePerTask.sort((a, b) =>
     a[filterOption] > b[filterOption] ? 1 : -1
   );
-  console.log(sortedAssignments);
+  return sortedAssignments;
 };

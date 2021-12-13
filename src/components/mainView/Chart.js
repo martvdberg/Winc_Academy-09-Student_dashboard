@@ -14,7 +14,7 @@ import {
 const colorFun = "#84DFFF";
 const colorDiff = "#516BEB";
 
-function Chart({ average, chartFilters }) {
+function Chart({ chartData, chartFilters }) {
   return (
     <div className="main__chart">
       <div className="main__chart--legend legend"></div>
@@ -46,14 +46,14 @@ function Chart({ average, chartFilters }) {
             {chartFilters.funChart ? (
               chartFilters.barChart ? (
                 <VictoryBar
-                  data={average}
+                  data={chartData}
                   x="task"
                   y="fun"
                   style={{ data: { fill: colorFun } }}
                 />
               ) : (
                 <VictoryLine
-                  data={average}
+                  data={chartData}
                   x="task"
                   y="fun"
                   style={{ data: { stroke: colorFun } }}
@@ -64,14 +64,14 @@ function Chart({ average, chartFilters }) {
             {chartFilters.diffChart ? (
               chartFilters.barChart ? (
                 <VictoryBar
-                  data={average}
+                  data={chartData}
                   x="task"
                   y="diff"
                   style={{ data: { fill: colorDiff } }}
                 />
               ) : (
                 <VictoryLine
-                  data={average}
+                  data={chartData}
                   x="task"
                   y="diff"
                   style={{ data: { stroke: colorDiff } }}

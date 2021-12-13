@@ -1,8 +1,8 @@
 import React from "react";
 import { generateId } from "../../util";
 
-function Table({ average }) {
-  const tableRows = average.map((task) => {
+function Table({ chartData }) {
+  const tableRows = chartData.map((task) => {
     return (
       <tr key={generateId()}>
         <td>{task.task}</td>

@@ -18,6 +18,7 @@ function App() {
   const [dataPerStudent, setDataPerStudent] = useState([]);
   const [averagePerTask, setAveragePerTask] = useState([]);
   const [allSelectedStudents, setAllSelectedStudents] = useState([]);
+  const [sortedData, setSortedData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [chartFilters, setChartFilters] = useState({
     funChart: true,
@@ -25,6 +26,9 @@ function App() {
     lineGraph: false,
     barChart: true,
     table: false,
+    sortFun: false,
+    sortDiff: false,
+    sortNone: true,
   });
 
   // fetch csv file from the public folder and put it into data
@@ -43,6 +47,20 @@ function App() {
     getData();
   }, []);
 
+  // sort data when the option is selected in the chart filter menu
+  useEffect(() => {
+    if (chartFilters.sortFun || chartFilters.sortDiff) {
+      let newState = [...averagePerTask];
+      if (chartFilters.sortFun) {
+        sortAssignmentByGrade(newState, "fun");
+      } else {
+        sortAssignmentByGrade(newState, "diff");
+      }
+      setSortedData(newState);
+    }
+  }, [chartFilters.sortFun, chartFilters.sortDiff, averagePerTask]);
+
+  // Function to calculate the average per task for one or more students
   const calcAverage = (studentsData) => {
     if (studentsData[0] !== undefined) {
       // get an array wih all the assignments
@@ -77,14 +95,15 @@ function App() {
 
         return {
           task: task.task,
-          fun: parseFloat(fun.toFixed(2)),
-          diff: parseFloat(diff.toFixed(2)),
+          fun: parseFloat(fun.toFixed(1)),
+          diff: parseFloat(diff.toFixed(1)),
         };
       });
       return averagePerTask;
     }
   };
 
+  // set the checked property to true or false when a student gets selected or deselected
   const handleChangeStudentCheckbox = (event) => {
     setDataPerStudent((prevState) => {
       const newState = prevState.map((student, index) => {
@@ -104,6 +123,7 @@ function App() {
     });
   };
 
+  // set checked property true or false when the select all students button gets clicked
   const handleAllSelectedStudents = (event) => {
     const newCheckedStatus = event.target.title === "reset" ? false : true;
     const newState = dataPerStudent.map((student) => {
@@ -115,12 +135,16 @@ function App() {
         assignments: [...student.assignments],
       };
     });
-    const newAverage = calcAverage(newState);
-    const selectedStudents = getSelectedStudents(newState);
     setDataPerStudent(newState);
-    setAveragePerTask(newAverage);
-    setAllSelectedStudents(selectedStudents);
+    if (!newCheckedStatus) {
+      const selectedStudents = getSelectedStudents(newState);
+      const newAverage = calcAverage(newState);
+      setAllSelectedStudents(selectedStudents);
+      setAveragePerTask(newAverage);
+    }
   };
+
+  // Event handler for when the apply button inside select multiple students gets clicked
 
   const handleSubmitSelectedStudents = () => {
     const newAverage = calcAverage(dataPerStudent);
@@ -129,11 +153,19 @@ function App() {
     setAllSelectedStudents(selectedStudents);
   };
 
+  // Event handler to set all chart filter optoin chexboxes and radiobtn inputs
   const handleChangeChartCheckboxes = (event) => {
-    console.log(event.target.title);
     setChartFilters((prevState) => {
       let newState;
-      if (
+      // set table
+      if (event.target.title === "table") {
+        newState = {
+          ...prevState,
+          [event.target.title]: !prevState[event.target.title],
+        };
+      }
+      // select linegraph or barchart
+      else if (
         event.target.value === "lineGraph" ||
         event.target.value === "barChart"
       ) {
@@ -143,12 +175,24 @@ function App() {
           barChart: false,
           [event.target.value]: true,
         };
-      } else if (event.target.title === "table") {
+      }
+      // select sort option or fun, diff or none
+      else if (
+        event.target.value === "sortNone" ||
+        event.target.value === "sortFun" ||
+        event.target.value === "sortDiff"
+      ) {
         newState = {
           ...prevState,
-          [event.target.title]: !prevState[event.target.title],
+          sortFun: false,
+          sortDiff: false,
+          sortNone: false,
+          [event.target.value]: true,
         };
-      } else {
+      }
+
+      // Select to show fun chart, diff chart or both
+      else {
         newState = {
           ...prevState,
           [event.target.value]: !prevState[event.target.value],
@@ -167,8 +211,6 @@ function App() {
     });
   };
 
-  // sortAssignmentByGrade(averagePerTask, "diff");
-
   return (
     <Router>
       <div className="app">
@@ -184,7 +226,11 @@ function App() {
 
         <Main
           students={dataPerStudent}
-          average={averagePerTask}
+          average={
+            chartFilters.sortFun || chartFilters.sortDiff
+              ? sortedData
+              : averagePerTask
+          }
           handleAllSelectedStudents={handleAllSelectedStudents}
           chartFilters={chartFilters}
           allSelectedStudents={allSelectedStudents}

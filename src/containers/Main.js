@@ -2,8 +2,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import MainOverview from "../components/mainView/MainOverview";
 import StudentOverview from "../components/mainView/StudentOverview";
-import { generateId } from "../util";
+import { generateId, sortAssignmentByGrade } from "../util";
 import "../styles/main/main.css";
+import { useEffect, useState } from "react/cjs/react.development";
 
 function Main({
   students,
@@ -14,17 +15,16 @@ function Main({
   loading,
 }) {
   // create a path for each student
-
   const studentPages = students.map((student) => {
-    // create an array with integers as value for the assignments
-    // const assignments = student.assignments.map((task) => {
-    //   return {
-    //     task: task.task,
-    //     fun: parseInt(task.fun),
-    //     diff: parseInt(task.diff),
-    //   };
-    // });
-
+    // sort the assignments when chartFilters.sortFun or diff is true
+    let assignments = [...student.assignments];
+    if (chartFilters.sortFun) {
+      sortAssignmentByGrade(assignments, "fun");
+      // console.log("fun: ", student.assignments);
+    } else if (chartFilters.sortDiff) {
+      sortAssignmentByGrade(assignments, "diff");
+      // console.log("diff: ", student.assignments);
+    }
     return (
       <Route
         path={`/${student.details.firstName}`}
@@ -32,7 +32,7 @@ function Main({
         element={
           <StudentOverview
             student={student}
-            chartData={student.assignments}
+            chartData={assignments}
             handleAllSelectedStudents={handleAllSelectedStudents}
             chartFilters={chartFilters}
           />
@@ -48,7 +48,7 @@ function Main({
           path="/"
           element={
             <MainOverview
-              average={average}
+              chartData={average}
               chartFilters={chartFilters}
               students={allSelectedStudents}
               loading={loading}
