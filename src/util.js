@@ -1,4 +1,4 @@
-import { extraData, emailDomain } from "./assets/extraStudentDetails";
+import { extraData } from "./assets/extraStudentDetails";
 
 export const csvToArray = (str, delimiter = ",") => {
   // set new headers and extract rows tarting after the first line break
@@ -17,14 +17,7 @@ export const csvToArray = (str, delimiter = ",") => {
   return completeObject;
 };
 
-const getLastName = () => {
-  const randomNumber = Math.floor(Math.random() * extraData.length);
-  return extraData[randomNumber].name.last;
-};
-const getProfilePicture = () => {
-  const randomNumber = Math.floor(Math.random() * extraData.length);
-  return extraData[randomNumber].picture.large;
-};
+// get a random age between 18 and 65
 const getAge = () => {
   let age;
   while (true) {
@@ -34,22 +27,37 @@ const getAge = () => {
     }
   }
 };
-const getEmail = (firstName) => {
-  const randomNumber = Math.floor(Math.random() * emailDomain.length);
-  return `${firstName}@${emailDomain[randomNumber].emailDomain}`;
+
+// create extra details for the student
+const getExtraDetails = (typeOfDetail, randomNumber) => {
+  if (typeOfDetail === "photo") {
+    return extraData[randomNumber].picture.large;
+  } else if (typeOfDetail === "email") {
+    const mailAdress = extraData[randomNumber].email;
+    const newMail = mailAdress.substring(mailAdress.indexOf("."));
+    return newMail;
+  } else if (typeOfDetail === "phone") {
+    return extraData[randomNumber].phone;
+  } else {
+    return extraData[randomNumber].name.last;
+  }
 };
 
 export const createObjectPerPerson = (object) => {
   const dataPerStudent = object.reduce((students, current, index) => {
+    // a randomNumber to use wen creating extra student details, declere it here so the email and last name will match
+    const randomNumber = Math.floor(Math.random() * extraData.length);
+
     // create a new student object if student name does not exist yet
     if (!students.some((e) => e.details.firstName === current.name)) {
       const newPerson = {
         details: {
           firstName: current.name,
-          lastName: getLastName(),
+          lastName: getExtraDetails("lastName", randomNumber),
           age: getAge(),
-          email: getEmail(current.name),
-          photo: getProfilePicture(),
+          email: current.name + getExtraDetails("email", randomNumber),
+          phone: getExtraDetails("phone", randomNumber),
+          photo: getExtraDetails("photo", randomNumber),
           id: generateId(),
           checked: false,
         },
