@@ -147,7 +147,9 @@ function App() {
       if (!newState.funChart && !newState.diffChart) {
         newState = {
           ...newState,
-          [event.target.value]: true,
+          funChart: true,
+          diffChart: true,
+          [event.target.value]: false,
         };
       }
       return newState;
