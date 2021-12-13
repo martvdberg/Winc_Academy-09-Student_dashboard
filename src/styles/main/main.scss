@@ -1,26 +1,64 @@
 .main {
+  display: grid;
+  grid-template-rows: auto auto;
   margin: 20px 0;
   color: #dfeeea;
+
+  &__chart {
+    grid-column: 1 / 3;
+  }
+
   &__selectedStudents {
-    width: 50%;
-    margin: auto;
+    position: sticky;
+    top: 20vh;
+    width: 60%;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
+    align-self: start;
+    justify-self: center;
+    &--header {
+      width: 100%;
+      color: #2f5d62;
+      font-size: 2em;
+    }
     &--student {
       display: flex;
       flex-direction: column;
       align-items: center;
+      font-size: 1.1em;
+    }
+  }
+
+  &__table {
+    width: 400px;
+    padding: 10px;
+    margin-right: 90px;
+    border-radius: 0.8em;
+    text-align: center;
+    background-color: #2f5d62;
+    justify-self: center;
+    box-shadow: 8px 10px 16px -5px rgba(0, 0, 0, 0.78);
+
+    &--task {
+      width: 200px;
+    }
+    &--rating {
+      width: 100px;
+    }
+    &--row {
+      border-bottom: 1px solid #a7c4bc;
     }
   }
 
   &__btn {
     position: fixed;
-    right: 0vw;
+    left: 0vw;
     bottom: 0vh;
     margin-bottom: 20px;
-    margin-right: 20px;
+    margin-left: 20px;
     color: #2f5d62;
     border: 1px solid #2f5d62;
     border-radius: 0.2em;
@@ -43,6 +81,8 @@
 }
 
 .student {
+  position: sticky;
+  top: 40vh;
   background-color: #2f5d62;
   width: fit-content;
   margin: 0 auto 20px auto;
@@ -51,11 +91,12 @@
   padding: 20px;
   border-radius: 0.5em;
   box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
+  align-self: start;
 
   &__img {
     width: fit-content;
     border-radius: 50%;
-    height: 150px;
+    height: 180px;
     width: auto;
     margin: 15px;
   }
@@ -64,10 +105,10 @@
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 4fr 1fr 1fr 1fr;
-    font-size: 0.9em;
+    font-size: 1.1em;
     &--name {
       grid-column: 1 / 3;
-      font-size: 1.7em;
+      font-size: 1.8em;
       text-align: center;
       line-height: 100%;
       margin: auto 0;

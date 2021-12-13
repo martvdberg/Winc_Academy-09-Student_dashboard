@@ -1,13 +1,10 @@
 .header {
   background-color: #2f5d62;
-  text-align: center;
-  font-size: 1.4em;
-  padding-top: 6px;
+  text-align: left;
+  font-size: 1.6em;
+  padding: 6px 20px;
 }
 .header__text {
   color: #dfeeea;
-  letter-spacing: 1.9em;
-}
-.header__text--bottom {
-  line-height: 0.8em;
+  letter-spacing: 1.5em;
 }/*# sourceMappingURL=header.css.map */

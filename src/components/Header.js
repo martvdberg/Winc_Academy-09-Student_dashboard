@@ -14,9 +14,9 @@ function Header({ handleAllSelectedStudents }) {
             handleAllSelectedStudents(event);
           }}
         >
-          Student
+          Student dashboard
         </h1>
-        <h1
+        {/* <h1
           title="reset"
           className="header__text--bottom"
           onClick={(event) => {
@@ -24,7 +24,7 @@ function Header({ handleAllSelectedStudents }) {
           }}
         >
           dashboard
-        </h1>
+        </h1> */}
       </Link>
     </header>
   );

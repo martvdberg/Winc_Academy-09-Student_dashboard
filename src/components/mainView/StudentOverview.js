@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import StudentBig from "../student/StudentBig";
+import StudentBig from "./student/StudentBig";
 import Chart from "./Chart";
 import Table from "./Table";
 

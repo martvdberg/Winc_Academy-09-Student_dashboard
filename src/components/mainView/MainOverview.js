@@ -1,6 +1,6 @@
 import React from "react";
 import Chart from "./Chart";
-import StudentSmall from "../student/StudentSmall";
+import StudentSmall from "./student/StudentSmall";
 import Table from "./Table";
 
 function MainOverview({ chartData, chartFilters, students, loading }) {

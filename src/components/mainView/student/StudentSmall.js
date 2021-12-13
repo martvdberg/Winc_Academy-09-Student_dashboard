@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getSelectedStudents, generateId } from "../../util";
+import { getSelectedStudents, generateId } from "../../../util";
 
 function StudentSmall({ students }) {
   const selectedStudents = getSelectedStudents(students);
@@ -28,7 +28,16 @@ function StudentSmall({ students }) {
     );
   });
 
-  return <div className="main__selectedStudents">{studentElements}</div>;
+  return (
+    <div className="main__selectedStudents ">
+      {selectedStudents.length > 0 ? (
+        <h2 className="main__selectedStudents--header">Selected students</h2>
+      ) : (
+        ""
+      )}
+      {studentElements}
+    </div>
+  );
 }
 
 export default StudentSmall;

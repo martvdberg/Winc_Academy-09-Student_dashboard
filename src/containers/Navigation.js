@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SelectSingleStudent from "../components/navComponents/SelectSingleStudent";
 import SelectMultipleStudents from "../components/navComponents/SelectMultipleStudents";
-import SelectChartFilters from "../components/navComponents/chartFilters/SelectChartFIlters";
+import SelectChartFilters from "../components/navComponents/SelectChartFIlters";
 import "../styles/nav/nav.css";
 
 function Navigation({

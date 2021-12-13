@@ -1,8 +1,8 @@
 import React from "react";
-import ShowChart from "./ShowChart";
-import ShowTable from "./ShowTable";
-import SortTask from "./SortTask";
-import TypeOfGraph from "./TypeOfGraph";
+import ShowChart from "./chartFilters/ShowChart";
+import ShowTable from "./chartFilters/ShowTable";
+import SortTask from "./chartFilters/SortTask";
+import TypeOfGraph from "./chartFilters/TypeOfGraph";
 
 function SelectChartFilters({
   handleMouseOverShowItems,
