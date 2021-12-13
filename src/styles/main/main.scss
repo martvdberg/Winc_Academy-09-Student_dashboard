@@ -1,7 +1,7 @@
 .main {
   margin: 20px 0;
   &__selectedStudents {
-    width: 75%;
+    width: 50%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -75,9 +75,10 @@
 }
 
 .studentSmall {
-  width: 115px;
+  width: 130px;
+  height: 180px;
   background-color: #2f5d62;
-  margin: 5px;
+  margin: 10px;
   padding: 10px;
   border-radius: 0.5em;
   box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);

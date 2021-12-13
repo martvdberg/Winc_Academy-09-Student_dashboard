@@ -1,7 +1,7 @@
 import React from "react";
 
 function SelectChartFilters({
-  handleClickShowItems,
+  handleShowItems,
   showItems,
   handleChangeChartCheckboxes,
   chartFilters,
@@ -11,7 +11,7 @@ function SelectChartFilters({
       <h2
         className="nav__header nav__chart--header"
         id="showChartFilters"
-        onClick={(event) => handleClickShowItems(event)}
+        onClick={(event) => handleShowItems(event)}
       >
         Chart filter
       </h2>

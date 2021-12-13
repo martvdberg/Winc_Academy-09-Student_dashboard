@@ -4,7 +4,7 @@ import { generateId } from "../../util";
 
 function SelectMultipleStudents({
   students,
-  handleClickShowItems,
+  handleShowItems,
   handleChangeStudentCheckbox,
   showItems,
   handleSubmitSelectedStudents,
@@ -35,7 +35,7 @@ function SelectMultipleStudents({
       <h2
         className="nav__header nav__multiple--header"
         id="showStudentCheckboxes"
-        onClick={(event) => handleClickShowItems(event)}
+        onClick={(event) => handleShowItems(event)}
       >
         Multiple students
       </h2>
@@ -68,7 +68,7 @@ function SelectMultipleStudents({
           <span
             className="nav__btn nav__btn--apply studentList__btn"
             onClick={(event) => {
-              handleClickShowItems(event);
+              handleShowItems(event);
               handleSubmitSelectedStudents();
             }}
           >

@@ -18,7 +18,7 @@ function Navigation({
     ChartFilters: false,
   });
 
-  const handleClickShowItems = (event) => {
+  const handleShowItems = (event) => {
     const targetElement = event.target.id.slice(4);
     if (
       targetElement === "StudentLinks" ||
@@ -45,12 +45,12 @@ function Navigation({
       <SelectSingleStudent
         students={dataPerStudent}
         showItems={showItems}
-        handleClickShowItems={handleClickShowItems}
+        handleShowItems={handleShowItems}
       />
       <SelectMultipleStudents
         students={dataPerStudent}
         showItems={showItems}
-        handleClickShowItems={handleClickShowItems}
+        handleShowItems={handleShowItems}
         handleChangeStudentCheckbox={handleChangeStudentCheckbox}
         handleSubmitSelectedStudents={handleSubmitSelectedStudents}
         handleAllSelectedStudents={handleAllSelectedStudents}
@@ -58,7 +58,7 @@ function Navigation({
 
       <SelectChartFilters
         showItems={showItems}
-        handleClickShowItems={handleClickShowItems}
+        handleShowItems={handleShowItems}
         handleChangeChartCheckboxes={handleChangeChartCheckboxes}
         chartFilters={chartFilters}
       />
