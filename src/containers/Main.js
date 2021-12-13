@@ -17,13 +17,13 @@ function Main({
 
   const studentPages = students.map((student) => {
     // create an array with integers as value for the assignments
-    const assignments = student.assignments.map((task) => {
-      return {
-        task: task.task,
-        fun: parseInt(task.fun),
-        diff: parseInt(task.diff),
-      };
-    });
+    // const assignments = student.assignments.map((task) => {
+    //   return {
+    //     task: task.task,
+    //     fun: parseInt(task.fun),
+    //     diff: parseInt(task.diff),
+    //   };
+    // });
 
     return (
       <Route
@@ -32,7 +32,7 @@ function Main({
         element={
           <StudentOverview
             student={student}
-            chartData={assignments}
+            chartData={student.assignments}
             handleAllSelectedStudents={handleAllSelectedStudents}
             chartFilters={chartFilters}
           />

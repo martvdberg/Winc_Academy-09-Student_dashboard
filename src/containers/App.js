@@ -62,18 +62,21 @@ function App() {
             (e) => e.task === taskPerStudent.task
           );
           assignments[indexOfTask].fun =
-            assignments[indexOfTask].fun + parseInt(taskPerStudent.fun);
+            assignments[indexOfTask].fun + taskPerStudent.fun;
           assignments[indexOfTask].diff =
-            assignments[indexOfTask].diff + parseInt(taskPerStudent.diff);
+            assignments[indexOfTask].diff + taskPerStudent.diff;
         });
       });
 
       // calc average for fun and diff -> divide the total with the amount of students
       const averagePerTask = assignments.map((task) => {
+        const fun = task.fun / arrayForCalc.length;
+        const diff = task.diff / arrayForCalc.length;
+
         return {
           task: task.task,
-          fun: task.fun / arrayForCalc.length,
-          diff: task.diff / arrayForCalc.length,
+          fun: parseFloat(fun.toFixed(2)),
+          diff: parseFloat(diff.toFixed(2)),
         };
       });
       return averagePerTask;
