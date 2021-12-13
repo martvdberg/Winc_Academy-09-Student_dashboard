@@ -13,11 +13,7 @@ function SelectMultipleStudents({
 }) {
   const StudentFilterCheckbox = students.map((student) => {
     return (
-      <label
-        htmlFor={student.details.id}
-        key={generateId()}
-        className="studentList__name"
-      >
+      <>
         <input
           type="checkbox"
           id={student.details.id}
@@ -26,8 +22,14 @@ function SelectMultipleStudents({
           checked={student.details.checked}
           onChange={(event) => handleChangeStudentCheckbox(event)}
         />
-        {`${student.details.firstName}`}
-      </label>
+        <label
+          htmlFor={student.details.id}
+          key={generateId()}
+          className="studentList__name"
+        >
+          {`${student.details.firstName}`}
+        </label>
+      </>
     );
   });
 

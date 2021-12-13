@@ -158,10 +158,10 @@ function App() {
     setChartFilters((prevState) => {
       let newState;
       // set table
-      if (event.target.title === "table") {
+      if (event.target.value === "table") {
         newState = {
           ...prevState,
-          [event.target.title]: !prevState[event.target.title],
+          [event.target.value]: !prevState[event.target.value],
         };
       }
       // select linegraph or barchart
