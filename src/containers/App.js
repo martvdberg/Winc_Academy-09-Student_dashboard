@@ -23,6 +23,7 @@ function App() {
     diffChart: true,
     lineGraph: false,
     barChart: true,
+    table: false,
   });
 
   // fetch csv file from the public folder and put it into data
@@ -128,6 +129,7 @@ function App() {
   };
 
   const handleChangeChartCheckboxes = (event) => {
+    console.log(event.target.title);
     setChartFilters((prevState) => {
       let newState;
       if (
@@ -139,6 +141,11 @@ function App() {
           lineGraph: false,
           barChart: false,
           [event.target.value]: true,
+        };
+      } else if (event.target.title === "table") {
+        newState = {
+          ...prevState,
+          [event.target.title]: !prevState[event.target.title],
         };
       } else {
         newState = {

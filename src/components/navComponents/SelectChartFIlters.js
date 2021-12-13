@@ -91,6 +91,17 @@ function SelectChartFilters({
             </label>
           </div>
         </div>
+        <span
+          className={`chartList__showTable ${
+            chartFilters.table ? "selected" : ""
+          }`}
+          title="table"
+          onClick={(event) => {
+            handleChangeChartCheckboxes(event);
+          }}
+        >
+          Show table
+        </span>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ function MainOverview({ average, chartFilters, students, loading }) {
         <>
           <Chart average={average} chartFilters={chartFilters} />
           <StudentSmall students={students} />
-          <Table average={average} />
+          {chartFilters.table ? <Table average={average} /> : null}
         </>
       )}
     </>
