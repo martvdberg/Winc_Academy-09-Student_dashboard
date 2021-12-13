@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getSelectedStudents } from "../../util";
+import { getSelectedStudents, generateId } from "../../util";
 
 function StudentSmall({ students }) {
   const selectedStudents = getSelectedStudents(students);
   const studentElements = selectedStudents.map((student) => {
     return (
-      <Link to={`/${student.details.firstName}`} className="studentSmall__link">
+      <Link
+        to={`/${student.details.firstName}`}
+        className="studentSmall__link"
+        key={generateId()}
+      >
         <div className="main__selectedStudents--student studentSmall">
           <img
             src={student.details.photo}

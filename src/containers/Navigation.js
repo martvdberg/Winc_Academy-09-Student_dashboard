@@ -18,7 +18,9 @@ function Navigation({
     ChartFilters: false,
   });
 
-  const handleShowItems = (event) => {
+  const [selectAllStatus, setSelectAllStatus] = useState(false);
+
+  const handleMouseOverShowItems = (event) => {
     const targetElement = event.target.id.slice(4);
     if (
       targetElement === "StudentLinks" ||
@@ -29,15 +31,20 @@ function Navigation({
         StudentLinks: false,
         StudentCheckboxes: false,
         ChartFilters: false,
-        [targetElement]: !showItems[targetElement],
-      });
-    } else {
-      setShowItems({
-        StudentLinks: false,
-        StudentCheckboxes: false,
-        ChartFilters: false,
+        [targetElement]: true,
       });
     }
+  };
+
+  const handleMouseOutHideItems = () => {
+    setShowItems({
+      StudentLinks: false,
+      StudentCheckboxes: false,
+      ChartFilters: false,
+    });
+  };
+  const handleSelectAllState = () => {
+    setSelectAllStatus(!selectAllStatus);
   };
 
   return (
@@ -45,20 +52,25 @@ function Navigation({
       <SelectSingleStudent
         students={dataPerStudent}
         showItems={showItems}
-        handleShowItems={handleShowItems}
+        handleMouseOverShowItems={handleMouseOverShowItems}
+        handleMouseOutHideItems={handleMouseOutHideItems}
       />
       <SelectMultipleStudents
         students={dataPerStudent}
         showItems={showItems}
-        handleShowItems={handleShowItems}
+        handleMouseOverShowItems={handleMouseOverShowItems}
+        handleMouseOutHideItems={handleMouseOutHideItems}
         handleChangeStudentCheckbox={handleChangeStudentCheckbox}
         handleSubmitSelectedStudents={handleSubmitSelectedStudents}
+        handleSelectAllState={handleSelectAllState}
+        selectAllStatus={selectAllStatus}
         handleAllSelectedStudents={handleAllSelectedStudents}
       />
 
       <SelectChartFilters
         showItems={showItems}
-        handleShowItems={handleShowItems}
+        handleMouseOverShowItems={handleMouseOverShowItems}
+        handleMouseOutHideItems={handleMouseOutHideItems}
         handleChangeChartCheckboxes={handleChangeChartCheckboxes}
         chartFilters={chartFilters}
       />

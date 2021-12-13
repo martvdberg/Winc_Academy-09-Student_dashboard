@@ -4,10 +4,13 @@ import { generateId } from "../../util";
 
 function SelectMultipleStudents({
   students,
-  handleShowItems,
+  handleMouseOverShowItems,
+  handleMouseOutHideItems,
   handleChangeStudentCheckbox,
   showItems,
   handleSubmitSelectedStudents,
+  selectAllStatus,
+  handleSelectAllState,
   handleAllSelectedStudents,
 }) {
   const StudentFilterCheckbox = students.map((student) => {
@@ -31,11 +34,11 @@ function SelectMultipleStudents({
   });
 
   return (
-    <div className="nav__multiple">
+    <div className="nav__multiple" onMouseLeave={handleMouseOutHideItems}>
       <h2
         className="nav__header nav__multiple--header"
         id="showStudentCheckboxes"
-        onClick={(event) => handleShowItems(event)}
+        onMouseEnter={(event) => handleMouseOverShowItems(event)}
       >
         Multiple students
       </h2>
@@ -47,15 +50,27 @@ function SelectMultipleStudents({
       >
         <span
           className="nav__btn nav__btn--all studentList__btn"
-          title="selectAll"
+          title={selectAllStatus ? "selectAll" : "reset"}
           onClick={(event) => {
             handleAllSelectedStudents(event);
+            handleSelectAllState();
           }}
         >
           select all
         </span>
         {StudentFilterCheckbox}
         <div className="nav__btnWrapper">
+          <span
+            className="nav__btn nav__btn--apply studentList__btn"
+            onClick={(event) => {
+              handleMouseOverShowItems(event);
+              handleSubmitSelectedStudents();
+            }}
+          >
+            <Link to={"/"} className="nav__btn--link">
+              Apply
+            </Link>
+          </span>
           <span
             className="nav__btn nav__btn--reset studentList__btn"
             title="reset"
@@ -64,17 +79,6 @@ function SelectMultipleStudents({
             }}
           >
             Reset
-          </span>
-          <span
-            className="nav__btn nav__btn--apply studentList__btn"
-            onClick={(event) => {
-              handleShowItems(event);
-              handleSubmitSelectedStudents();
-            }}
-          >
-            <Link to={"/"} className="nav__btn--link">
-              Apply
-            </Link>
           </span>
         </div>
       </div>

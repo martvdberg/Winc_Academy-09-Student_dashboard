@@ -1,17 +1,18 @@
 import React from "react";
 
 function SelectChartFilters({
-  handleShowItems,
+  handleMouseOverShowItems,
+  handleMouseOutHideItems,
   showItems,
   handleChangeChartCheckboxes,
   chartFilters,
 }) {
   return (
-    <div className="nav__chart">
+    <div className="nav__chart" onMouseLeave={handleMouseOutHideItems}>
       <h2
         className="nav__header nav__chart--header"
         id="showChartFilters"
-        onClick={(event) => handleShowItems(event)}
+        onMouseEnter={(event) => handleMouseOverShowItems(event)}
       >
         Chart filter
       </h2>

@@ -2,7 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { generateId } from "../../util";
 
-function SelectSingleStudent({ students, handleShowItems, showItems }) {
+function SelectSingleStudent({
+  students,
+  handleMouseOverShowItems,
+  handleMouseOutHideItems,
+  showItems,
+}) {
   const studentFilterLink = students.map((student) => {
     return (
       <Link
@@ -16,14 +21,11 @@ function SelectSingleStudent({ students, handleShowItems, showItems }) {
   });
 
   return (
-    <div
-      className="nav__single"
-      onMouseOver={(event) => handleShowItems(event)}
-    >
+    <div className="nav__single" onMouseLeave={handleMouseOutHideItems}>
       <h2
         className="nav__header nav__single--header"
         id="showStudentLinks"
-        onMouseOver={(event) => handleShowItems(event)}
+        onMouseEnter={(event) => handleMouseOverShowItems(event)}
       >
         Single student
       </h2>
@@ -32,7 +34,7 @@ function SelectSingleStudent({ students, handleShowItems, showItems }) {
           showItems.StudentLinks ? "" : "hidden"
         }`}
         id="studentLinks"
-        onClick={(event) => handleShowItems(event)}
+        onClick={(event) => handleMouseOverShowItems(event)}
       >
         {studentFilterLink}
       </div>
