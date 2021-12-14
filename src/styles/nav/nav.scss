@@ -68,9 +68,6 @@
         color: rgba(0, 255, 0, 0.747);
       }
     }
-    &--link {
-      color: inherit;
-    }
   }
 }
 
@@ -86,9 +83,9 @@
       border-bottom-right-radius: 0.5em;
       box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
     }
-  }
-  &__link {
-    color: inherit;
+    &--checkbox {
+      margin-right: 7px;
+    }
   }
 }
 
@@ -113,30 +110,19 @@
     margin: 10px 0;
   }
 
-  &__showGraph--fun,
-  &__showGraph--diff,
-  &__typeGraph--text,
-  &__sortTask--text,
-  &__showTable--text {
-    margin: 7px;
-    padding: 5px;
-    &:hover {
-      cursor: pointer;
-      background-color: #dfeeea;
-      color: #2f5d62;
-      border-bottom-right-radius: 0.5em;
-      box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
-    }
-  }
-}
-
-input {
-  display: none;
-}
-
-input:checked + label {
-  background-color: #dfeeea;
-  color: #2f5d62;
-  border-bottom-right-radius: 0.5em;
-  box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
+  // &__showGraph--fun,
+  // &__showGraph--diff,
+  // &__typeGraph--text,
+  // &__sortTask--text,
+  // &__showTable--text {
+  //   margin: 7px;
+  //   padding: 5px;
+  //   &:hover {
+  //     cursor: pointer;
+  //     background-color: #dfeeea;
+  //     color: #2f5d62;
+  //     border-bottom-right-radius: 0.5em;
+  //     box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
+  //   }
+  // }
 }

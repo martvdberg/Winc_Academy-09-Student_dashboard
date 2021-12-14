@@ -7,30 +7,31 @@ function ShowChart({ chartFilters, handleChangeChartCheckboxes }) {
         Choose data
       </h3>
       <div className="chartList__optionWrapper">
-        <input
-          type="checkbox"
-          id="filterFun"
-          className="chartList__showGraph--checkbox"
-          value="funChart"
-          checked={chartFilters.funChart}
-          onChange={(event) => {
-            handleChangeChartCheckboxes(event);
-          }}
-        />
         <label htmlFor="filterFun" className="chartList__showGraph--fun">
+          <input
+            type="checkbox"
+            id="filterFun"
+            className="chartList__showGraph--checkbox"
+            value="funChart"
+            checked={chartFilters.funChart}
+            onChange={(event) => {
+              handleChangeChartCheckboxes(event);
+            }}
+          />
           Fun
         </label>
-        <input
-          type="checkbox"
-          id="filterDiff"
-          className="chartList__showGraph--checkbox"
-          value="diffChart"
-          checked={chartFilters.diffChart}
-          onChange={(event) => {
-            handleChangeChartCheckboxes(event);
-          }}
-        />
+
         <label htmlFor="filterDiff" className="chartList__showGraph--diff">
+          <input
+            type="checkbox"
+            id="filterDiff"
+            className="chartList__showGraph--checkbox"
+            value="diffChart"
+            checked={chartFilters.diffChart}
+            onChange={(event) => {
+              handleChangeChartCheckboxes(event);
+            }}
+          />
           Difficult
         </label>
       </div>

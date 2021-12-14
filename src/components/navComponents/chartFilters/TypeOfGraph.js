@@ -7,34 +7,35 @@ function TypeOfGraph({ chartFilters, handleChangeChartCheckboxes }) {
         Graph type
       </h3>
       <div className="chartList__optionWrapper">
-        <input
-          type="radio"
-          id="lineGraph"
-          className="chartList__typeGraph--option"
-          name="graphType"
-          value="lineGraph"
-          checked={chartFilters.lineGraph}
-          onChange={() => {}}
-          onClick={(event) => {
-            handleChangeChartCheckboxes(event);
-          }}
-        />
         <label htmlFor="lineGraph" className="chartList__typeGraph--text">
+          <input
+            type="radio"
+            id="lineGraph"
+            className="chartList__typeGraph--option"
+            name="graphType"
+            value="lineGraph"
+            checked={chartFilters.lineGraph}
+            onChange={() => {}}
+            onClick={(event) => {
+              handleChangeChartCheckboxes(event);
+            }}
+          />
           Line
         </label>
-        <input
-          type="radio"
-          id="barChart"
-          className="chartList__typeGraph--option"
-          name="graphType"
-          value="barChart"
-          checked={chartFilters.barChart}
-          onChange={() => {}}
-          onClick={(event) => {
-            handleChangeChartCheckboxes(event);
-          }}
-        />
+
         <label htmlFor="barChart" className="chartList__typeGraph--text">
+          <input
+            type="radio"
+            id="barChart"
+            className="chartList__typeGraph--option"
+            name="graphType"
+            value="barChart"
+            checked={chartFilters.barChart}
+            onChange={() => {}}
+            onClick={(event) => {
+              handleChangeChartCheckboxes(event);
+            }}
+          />
           Bars
         </label>
       </div>

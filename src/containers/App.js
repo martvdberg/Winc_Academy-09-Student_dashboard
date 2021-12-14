@@ -49,15 +49,13 @@ function App() {
 
   // sort data when the option is selected in the chart filter menu
   useEffect(() => {
-    if (chartFilters.sortFun || chartFilters.sortDiff) {
-      let newState = [...averagePerTask];
-      if (chartFilters.sortFun) {
-        sortAssignmentByGrade(newState, "fun");
-      } else {
-        sortAssignmentByGrade(newState, "diff");
-      }
-      setSortedData(newState);
+    let newState = [...averagePerTask];
+    if (chartFilters.sortFun) {
+      sortAssignmentByGrade(newState, "fun");
+    } else if (chartFilters.sortDiff) {
+      sortAssignmentByGrade(newState, "diff");
     }
+    setSortedData(newState);
   }, [chartFilters.sortFun, chartFilters.sortDiff, averagePerTask]);
 
   // Function to calculate the average per task for one or more students
@@ -136,6 +134,7 @@ function App() {
       };
     });
     setDataPerStudent(newState);
+    // reset the chart and select students when reset is pressed
     if (!newCheckedStatus) {
       const selectedStudents = getSelectedStudents(newState);
       const newAverage = calcAverage(newState);
@@ -145,7 +144,6 @@ function App() {
   };
 
   // Event handler for when the apply button inside select multiple students gets clicked
-
   const handleSubmitSelectedStudents = () => {
     const newAverage = calcAverage(dataPerStudent);
     const selectedStudents = getSelectedStudents(dataPerStudent);
@@ -153,19 +151,11 @@ function App() {
     setAllSelectedStudents(selectedStudents);
   };
 
-  // Event handler to set all chart filter optoin chexboxes and radiobtn inputs
+  // Event handler to set all chart filter option chexboxes and radiobtn inputs
   const handleChangeChartCheckboxes = (event) => {
     setChartFilters((prevState) => {
       let newState;
-      // set table
-      if (event.target.value === "table") {
-        newState = {
-          ...prevState,
-          [event.target.value]: !prevState[event.target.value],
-        };
-      }
-      // select linegraph or barchart
-      else if (
+      if (
         event.target.value === "lineGraph" ||
         event.target.value === "barChart"
       ) {
@@ -191,7 +181,7 @@ function App() {
         };
       }
 
-      // Select to show fun chart, diff chart or both
+      // Select to show fun chart, diff chart or both and also handle show table
       else {
         newState = {
           ...prevState,

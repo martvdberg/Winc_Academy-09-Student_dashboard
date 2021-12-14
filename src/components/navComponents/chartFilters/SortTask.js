@@ -7,52 +7,52 @@ function SortTask({ handleChangeChartCheckboxes, chartFilters }) {
         Sort tasks
       </h3>
       <div className="chartList__optionWrapper">
-        <input
-          type="radio"
-          id="sortNone"
-          className="chartList__sortTask--option"
-          name="sortTask"
-          value="sortNone"
-          checked={chartFilters.sortNone}
-          onChange={() => {}}
-          onClick={(event) => {
-            handleChangeChartCheckboxes(event);
-          }}
-        />
         <label htmlFor="sortNone" className="chartList__sortTask--text">
+          <input
+            type="radio"
+            id="sortNone"
+            className="chartList__sortTask--option"
+            name="sortTask"
+            value="sortNone"
+            checked={chartFilters.sortNone}
+            onChange={() => {}}
+            onClick={(event) => {
+              handleChangeChartCheckboxes(event);
+            }}
+          />
           None
         </label>
-        <input
-          type="radio"
-          id="sortFun"
-          className="chartList__sortTask--option"
-          name="sortTask"
-          value="sortFun"
-          checked={chartFilters.sortFun}
-          onChange={() => {}}
-          onClick={(event) => {
-            handleChangeChartCheckboxes(event);
-          }}
-        />
         <label htmlFor="sortFun" className="chartList__sortTask--text">
+          <input
+            type="radio"
+            id="sortFun"
+            className="chartList__sortTask--option"
+            name="sortTask"
+            value="sortFun"
+            checked={chartFilters.sortFun}
+            onChange={() => {}}
+            onClick={(event) => {
+              handleChangeChartCheckboxes(event);
+            }}
+          />
           Fun
         </label>
-        <input
-          type="radio"
-          id="sortDiff"
-          className="chartList__sortTask--option"
-          name="sortTask"
-          value="sortDiff"
-          checked={chartFilters.sortDiff}
-          onChange={() => {}}
-          onClick={(event) => {
-            handleChangeChartCheckboxes(event);
-          }}
-        />
-
         <label htmlFor="sortDiff" className="chartList__sortTask--text">
+          <input
+            type="radio"
+            id="sortDiff"
+            className="chartList__sortTask--option"
+            name="sortTask"
+            value="sortDiff"
+            checked={chartFilters.sortDiff}
+            onChange={() => {}}
+            onClick={(event) => {
+              handleChangeChartCheckboxes(event);
+            }}
+          />
           Difficult
         </label>
+        <span className="chartList__sortTask--order">&#x21C5;</span>
       </div>
     </div>
   );

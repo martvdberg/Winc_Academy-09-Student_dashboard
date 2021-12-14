@@ -13,7 +13,7 @@ function SelectSingleStudent({
       <Link
         to={`/${student.details.firstName}`}
         key={generateId()}
-        className="studentList__name studentList__link"
+        className="menu__option"
       >
         {`${student.details.firstName}`}
       </Link>
@@ -21,16 +21,16 @@ function SelectSingleStudent({
   });
 
   return (
-    <div className="nav__single" onMouseLeave={handleMouseOutHideItems}>
+    <div className="nav__menu" onMouseLeave={handleMouseOutHideItems}>
       <h2
-        className="nav__header nav__single--header"
+        className="nav__header"
         id="showStudentLinks"
         onMouseEnter={(event) => handleMouseOverShowItems(event)}
       >
         Single student
       </h2>
       <div
-        className={`nav__list nav__single--list studentList ${
+        className={`nav__menu--wrapper menu studentList ${
           showItems.StudentLinks ? "" : "hidden"
         }`}
         id="studentLinks"

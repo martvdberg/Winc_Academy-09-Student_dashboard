@@ -18,6 +18,7 @@ function Navigation({
     ChartFilters: false,
   });
 
+  // set state to show the menu items when the mouse enters
   const handleMouseOverShowItems = (event) => {
     const targetElement = event.target.id.slice(4);
     if (
@@ -34,6 +35,7 @@ function Navigation({
     }
   };
 
+  // set state to hide the menu items when the mouse leaves
   const handleMouseOutHideItems = () => {
     setShowItems({
       StudentLinks: false,

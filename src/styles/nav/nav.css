@@ -86,9 +86,6 @@
 .nav__btn--apply:hover {
   color: rgba(0, 255, 0, 0.747);
 }
-.nav__btn--link {
-  color: inherit;
-}
 
 .studentList {
   padding: 20px;
@@ -105,8 +102,8 @@
   -webkit-box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
           box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
 }
-.studentList__link {
-  color: inherit;
+.studentList__name--checkbox {
+  margin-right: 7px;
 }
 
 .chartList {
@@ -131,28 +128,4 @@
 }
 .chartList__showTable {
   margin: 10px 0;
-}
-.chartList__showGraph--fun, .chartList__showGraph--diff, .chartList__typeGraph--text, .chartList__sortTask--text, .chartList__showTable--text {
-  margin: 7px;
-  padding: 5px;
-}
-.chartList__showGraph--fun:hover, .chartList__showGraph--diff:hover, .chartList__typeGraph--text:hover, .chartList__sortTask--text:hover, .chartList__showTable--text:hover {
-  cursor: pointer;
-  background-color: #dfeeea;
-  color: #2f5d62;
-  border-bottom-right-radius: 0.5em;
-  -webkit-box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
-          box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
-}
-
-input {
-  display: none;
-}
-
-input:checked + label {
-  background-color: #dfeeea;
-  color: #2f5d62;
-  border-bottom-right-radius: 0.5em;
-  -webkit-box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
-          box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
 }/*# sourceMappingURL=nav.css.map */
