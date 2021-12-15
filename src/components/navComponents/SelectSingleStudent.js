@@ -30,9 +30,7 @@ function SelectSingleStudent({
         Single student
       </h2>
       <div
-        className={`nav__menu--wrapper menu studentList ${
-          showItems.StudentLinks ? "" : "hidden"
-        }`}
+        className={`menu  ${showItems.StudentLinks ? "" : "hidden"}`}
         id="studentLinks"
         onClick={(event) => handleMouseOverShowItems(event)}
       >

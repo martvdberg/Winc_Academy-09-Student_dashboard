@@ -21,7 +21,7 @@ a {
 .app {
   display: grid;
   grid-template-columns: auto 95% auto;
-  grid-template-rows: 80px 35px 1fr;
+  grid-template-rows: auto 35px 1fr;
   grid-template-areas: "H H H " "N N N" ". M .";
 }
 

@@ -2,38 +2,32 @@ import React from "react";
 
 function ShowTable({ chartFilters, handleChangeChartCheckboxes }) {
   return (
-    <div className="chartList__showTable  chartList__wrapper  ">
-      {/* <h3 className="nav__header--sub  chartList__header chartList__showTable--header">
-        Table?
-      </h3> */}
-      <div className="chartList__optionWrapper">
+    <div className="menu__subMenu">
+      {/* <span
+        className="menu__option"
+        onClick={(event) => {
+          handleChangeChartCheckboxes(event);
+        }}
+      >
+        Show table
+      </span> */}
+
+      <label
+        htmlFor="showTable"
+        className="menu__option menu__option--special "
+      >
         <input
           type="checkbox"
           id="showTable"
-          className="chartList__showTable--checkbox"
+          className="menu__option--hide"
           value="table"
           checked={chartFilters.table}
           onChange={(event) => {
             handleChangeChartCheckboxes(event);
           }}
         />
-        <label
-          htmlFor="showTable"
-          className="chartList__showTable--text nav__header--sub  chartList__header chartList__showTable--header "
-        >
-          Show table
-        </label>
-        {/*      
-      <h3
-        className={`nav__header--sub ${chartFilters.table ? "selected" : ""}`}
-        title="table"
-        onClick={(event) => {
-          handleChangeChartCheckboxes(event);
-        }}
-      >
         Show table
-      </h3> */}
-      </div>
+      </label>
     </div>
   );
 }

@@ -29,6 +29,7 @@ function App() {
     sortFun: false,
     sortDiff: false,
     sortNone: true,
+    sortOrder: false,
   });
 
   // fetch csv file from the public folder and put it into data
@@ -55,8 +56,18 @@ function App() {
     } else if (chartFilters.sortDiff) {
       sortAssignmentByGrade(newState, "diff");
     }
+
+    // check sortOrder if true reverse array
+    if (chartFilters.sortOrder) {
+      newState.reverse();
+    }
     setSortedData(newState);
-  }, [chartFilters.sortFun, chartFilters.sortDiff, averagePerTask]);
+  }, [
+    chartFilters.sortFun,
+    chartFilters.sortDiff,
+    chartFilters.sortOrder,
+    averagePerTask,
+  ]);
 
   // Function to calculate the average per task for one or more students
   const calcAverage = (studentsData) => {
@@ -179,8 +190,12 @@ function App() {
           sortNone: false,
           [event.target.value]: true,
         };
+      } else if (event.target.title === "sortOrder") {
+        newState = {
+          ...prevState,
+          sortOrder: !prevState.sortOrder,
+        };
       }
-
       // Select to show fun chart, diff chart or both and also handle show table
       else {
         newState = {

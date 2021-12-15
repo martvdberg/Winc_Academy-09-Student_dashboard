@@ -12,19 +12,15 @@ function SelectChartFilters({
   chartFilters,
 }) {
   return (
-    <div className="nav__chart" onMouseLeave={handleMouseOutHideItems}>
+    <div className="nav__menu" onMouseLeave={handleMouseOutHideItems}>
       <h2
-        className="nav__header nav__chart--header"
+        className="nav__header"
         id="showChartFilters"
         onMouseEnter={(event) => handleMouseOverShowItems(event)}
       >
         Chart filter
       </h2>
-      <div
-        className={`nav__list nav__chart--list chartList ${
-          showItems.ChartFilters ? null : "hidden"
-        }`}
-      >
+      <div className={`menu ${showItems.ChartFilters ? "" : "hidden"}`}>
         <ShowChart
           chartFilters={chartFilters}
           handleChangeChartCheckboxes={handleChangeChartCheckboxes}
