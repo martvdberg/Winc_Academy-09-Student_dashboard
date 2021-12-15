@@ -11,7 +11,6 @@ function StudentOverview({
   chartFilters,
   handleAllSelectedStudents,
 }) {
-  console.log(chartData);
   return (
     <>
       <Chart chartData={chartData} chartFilters={chartFilters} />

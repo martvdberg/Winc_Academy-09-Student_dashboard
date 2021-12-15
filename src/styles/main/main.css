@@ -70,13 +70,14 @@
   margin-bottom: 20px;
   margin-left: 20px;
   color: #2f5d62;
-  border: 1px solid #2f5d62;
+  border: 3px solid #2f5d62;
   border-radius: 0.2em;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding: 8px;
   font-size: 1em;
+  font-weight: 650;
   -webkit-box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
           box-shadow: 8px 10px 16px -8px rgba(0, 0, 0, 0.78);
 }

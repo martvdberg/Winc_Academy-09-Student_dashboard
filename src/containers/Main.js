@@ -4,7 +4,6 @@ import MainOverview from "../components/mainView/MainOverview";
 import StudentOverview from "../components/mainView/StudentOverview";
 import { generateId, sortAssignmentByGrade } from "../util";
 import "../styles/main/main.css";
-import { useEffect, useState } from "react/cjs/react.development";
 
 function Main({
   students,
@@ -16,19 +15,14 @@ function Main({
 }) {
   // create a path for each student
   const studentPages = students.map((student) => {
-    // sort the assignments when chartFilters.sortFun or diff is true
+    // sort the assignments when chartFilters.sortFun or ...diff is true
     let assignments = [...student.assignments];
     if (chartFilters.sortFun) {
-      sortAssignmentByGrade(assignments, "fun");
-      // console.log("fun: ", student.assignments);
+      sortAssignmentByGrade(assignments, "fun", chartFilters.sortOrder);
     } else if (chartFilters.sortDiff) {
-      sortAssignmentByGrade(assignments, "diff");
-      // console.log("diff: ", student.assignments);
+      sortAssignmentByGrade(assignments, "diff", chartFilters.sortOrder);
     }
-    // check sortOrder if true reverse array
-    if (chartFilters.sortOrder) {
-      assignments.reverse();
-    }
+
     return (
       <Route
         path={`/${student.details.firstName}`}

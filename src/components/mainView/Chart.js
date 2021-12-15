@@ -2,6 +2,7 @@ import React from "react";
 
 import {
   VictoryChart,
+  VictoryLegend,
   VictoryGroup,
   VictoryBar,
   VictoryAxis,
@@ -20,13 +21,23 @@ function Chart({ chartData, chartFilters }) {
       <div className="main__chart--legend legend"></div>
       <div className="main__chart--chart">
         <VictoryChart
-          height={300}
+          height={335}
           width={1000}
           domainPadding={{ x: 8, y: 5 }}
           theme={VictoryTheme.material}
-          padding={{ left: 50, top: 0, right: 20, bottom: 80 }}
+          padding={{ left: 50, top: 30, right: 20, bottom: 80 }}
           containerComponent={<VictoryZoomContainer />}
         >
+          <VictoryLegend
+            x={40}
+            y={5}
+            orientation="horizontal"
+            data={[
+              { name: "Fun", symbol: { fill: colorFun } },
+              { name: "Difficult", symbol: { fill: colorDiff } },
+            ]}
+          />
+
           <VictoryAxis
             style={{
               tickLabels: { angle: -65, fontSize: 8 },

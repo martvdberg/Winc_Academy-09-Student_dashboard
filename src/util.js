@@ -1,7 +1,7 @@
 import { extraData } from "./assets/extraStudentDetails";
 
 export const csvToArray = (str, delimiter = ",") => {
-  // set new headers and extract rows tarting after the first line break
+  // set new headers and extract rows starting after the first line break
   const headerValues = ["name", "task", "diff", "fun"];
   const rows = str.slice(str.indexOf("\n") + 1).split("\n");
 
@@ -17,11 +17,11 @@ export const csvToArray = (str, delimiter = ",") => {
   return completeObject;
 };
 
-// get a random age between 18 and 65
+// get a random age between 18 and 45
 const getAge = () => {
   let age;
   while (true) {
-    age = Math.floor(Math.random() * 65);
+    age = Math.floor(Math.random() * 45);
     if (age > 18) {
       return age;
     }
@@ -44,7 +44,7 @@ const getExtraDetails = (typeOfDetail, randomNumber) => {
 };
 
 export const createObjectPerPerson = (object) => {
-  const dataPerStudent = object.reduce((students, current, index) => {
+  const dataPerStudent = object.reduce((students, current) => {
     // a randomNumber to use wen creating extra student details, declere it here so the email and last name will match
     const randomNumber = Math.floor(Math.random() * extraData.length);
 
@@ -97,18 +97,26 @@ export const sortByTask = (studentsData) =>
     };
   });
 
+// Find all the selected students
 export const getSelectedStudents = (studentsData) => {
   if (studentsData !== undefined) {
     return studentsData.filter((student) => student.details.checked);
   }
 };
 
-export const generateId = () => `${Math.floor(Math.random() * 999999999)}`;
-
-// sort assignments by fun or diff
-export const sortAssignmentByGrade = (averagePerTask, filterOption) => {
+// sort assignments by fun or diff and selected order
+export const sortAssignmentByGrade = (
+  averagePerTask,
+  filterOption,
+  filterOrder
+) => {
   const sortedAssignments = averagePerTask.sort((a, b) =>
     a[filterOption] > b[filterOption] ? 1 : -1
   );
+  if (filterOrder) {
+    sortedAssignments.reverse();
+  }
   return sortedAssignments;
 };
+
+export const generateId = () => `${Math.floor(Math.random() * 999999999)}`;

@@ -28,7 +28,7 @@ function App() {
     table: false,
     sortFun: false,
     sortDiff: false,
-    sortNone: false,
+    sortNone: true,
     sortOrder: false,
   });
 
@@ -48,18 +48,13 @@ function App() {
     getData();
   }, []);
 
-  // sort data when the option is selected in the chart filter menu
+  // sort data when the option is selected in the settings filter menu
   useEffect(() => {
     let newState = [...averagePerTask];
     if (chartFilters.sortFun) {
-      sortAssignmentByGrade(newState, "fun");
+      sortAssignmentByGrade(newState, "fun", chartFilters.sortOrder);
     } else if (chartFilters.sortDiff) {
-      sortAssignmentByGrade(newState, "diff");
-    }
-
-    // check sortOrder if true reverse array
-    if (chartFilters.sortOrder) {
-      newState.reverse();
+      sortAssignmentByGrade(newState, "diff", chartFilters.sortOrder);
     }
     setSortedData(newState);
   }, [
@@ -114,7 +109,7 @@ function App() {
 
   // set the checked property to true or false when a student gets selected or deselected
   const handleChangeStudentCheckbox = (event) => {
-    setDataPerStudent((prevState) => {
+    return setDataPerStudent((prevState) => {
       const newState = prevState.map((student, index) => {
         if (student.details.id === event.target.value) {
           return {
@@ -132,7 +127,7 @@ function App() {
     });
   };
 
-  // set checked property true or false when the select all students button gets clicked
+  // change checked property for all students when select all or reset is selected
   const handleAllSelectedStudents = (event) => {
     const newCheckedStatus = event.target.title === "reset" ? false : true;
     const newState = dataPerStudent.map((student) => {
@@ -145,7 +140,7 @@ function App() {
       };
     });
     setDataPerStudent(newState);
-    // reset the chart and select students when reset is pressed
+    // reset the chart and selected students when reset is pressed
     if (!newCheckedStatus) {
       const selectedStudents = getSelectedStudents(newState);
       const newAverage = calcAverage(newState);
