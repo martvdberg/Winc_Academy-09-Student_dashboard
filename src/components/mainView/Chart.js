@@ -11,8 +11,8 @@ import {
   VictoryLine,
 } from "victory";
 
-const colorFun = "#84DFFF";
-const colorDiff = "#516BEB";
+const colorFun = "#F6830F";
+const colorDiff = "#BB2205";
 
 function Chart({ chartData, chartFilters }) {
   return (
@@ -20,8 +20,8 @@ function Chart({ chartData, chartFilters }) {
       <div className="main__chart--legend legend"></div>
       <div className="main__chart--chart">
         <VictoryChart
-          height={350}
-          width={1100}
+          height={300}
+          width={1000}
           domainPadding={{ x: 8, y: 5 }}
           theme={VictoryTheme.material}
           padding={{ left: 50, top: 0, right: 20, bottom: 80 }}
@@ -30,6 +30,7 @@ function Chart({ chartData, chartFilters }) {
           <VictoryAxis
             style={{
               tickLabels: { angle: -65, fontSize: 8 },
+              grid: { display: "none" },
             }}
             tickLabelComponent={<VictoryLabel textAnchor={"end"} />}
           />
@@ -39,6 +40,7 @@ function Chart({ chartData, chartFilters }) {
             tickValues={[0, 1, 2, 3, 4, 5]}
             style={{
               tickLabels: { fontSize: 6 },
+              grid: { stroke: "#000", strokeWidth: 0.6 },
             }}
           />
 

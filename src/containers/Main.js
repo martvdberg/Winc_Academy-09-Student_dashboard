@@ -25,6 +25,10 @@ function Main({
       sortAssignmentByGrade(assignments, "diff");
       // console.log("diff: ", student.assignments);
     }
+    // check sortOrder if true reverse array
+    if (chartFilters.sortOrder) {
+      assignments.reverse();
+    }
     return (
       <Route
         path={`/${student.details.firstName}`}

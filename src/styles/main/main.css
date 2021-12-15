@@ -10,7 +10,7 @@
 .main__selectedStudents {
   position: sticky;
   top: 20vh;
-  width: 60%;
+  width: 50%;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -38,9 +38,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   font-size: 1.1em;
 }
 .main__table {

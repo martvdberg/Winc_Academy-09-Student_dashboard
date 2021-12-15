@@ -117,4 +117,9 @@
 }
 .menu__btn--reset:hover {
   color: red;
+}
+
+.selectedOrder {
+  font-size: 1.3em;
+  font-weight: 675;
 }/*# sourceMappingURL=nav.css.map */

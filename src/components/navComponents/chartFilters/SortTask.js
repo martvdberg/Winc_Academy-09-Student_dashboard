@@ -57,8 +57,12 @@ function SortTask({ handleChangeChartCheckboxes, chartFilters }) {
         }}
       >
         sort order
-        {chartFilters.sortOrder ? " van hoog naar laag" : " van laag naar hoog"}
-        {/* &#x21C5;  */}
+        <span className={chartFilters.sortOrder ? "selectedOrder" : ""}>
+          &#x2193;
+        </span>
+        <span className={!chartFilters.sortOrder ? "selectedOrder" : ""}>
+          &#x2191;
+        </span>
       </span>
     </div>
   );
