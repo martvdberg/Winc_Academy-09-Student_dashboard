@@ -18,7 +18,7 @@ function SelectChartFilters({
         id="showChartFilters"
         onMouseEnter={(event) => handleMouseOverShowItems(event)}
       >
-        Chart filter
+        Settings
       </h2>
       <div className={`menu ${showItems.ChartFilters ? "" : "hidden"}`}>
         <ShowChart

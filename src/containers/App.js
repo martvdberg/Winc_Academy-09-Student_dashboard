@@ -28,7 +28,7 @@ function App() {
     table: false,
     sortFun: false,
     sortDiff: false,
-    sortNone: true,
+    sortNone: false,
     sortOrder: false,
   });
 
@@ -203,7 +203,7 @@ function App() {
           [event.target.value]: !prevState[event.target.value],
         };
       }
-      // make sure there will always be a graph visible
+      // make sure there will always be a graph (line or bar) visible
       if (!newState.funChart && !newState.diffChart) {
         newState = {
           ...newState,
