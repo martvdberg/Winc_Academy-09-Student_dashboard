@@ -1,17 +1,8 @@
 import React from "react";
 
-function ShowTable({ chartFilters, handleChangeChartCheckboxes }) {
+function ShowTable({ filterSettings, handleFilterSettings }) {
   return (
     <div className="menu__subMenu">
-      {/* <span
-        className="menu__option"
-        onClick={(event) => {
-          handleChangeChartCheckboxes(event);
-        }}
-      >
-        Show table
-      </span> */}
-
       <label
         htmlFor="showTable"
         className="menu__option menu__option--special "
@@ -21,9 +12,9 @@ function ShowTable({ chartFilters, handleChangeChartCheckboxes }) {
           id="showTable"
           className="menu__option--hide"
           value="table"
-          checked={chartFilters.table}
+          checked={filterSettings.table}
           onChange={(event) => {
-            handleChangeChartCheckboxes(event);
+            handleFilterSettings(event);
           }}
         />
         Show table

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SelectSingleStudent from "../components/navComponents/SelectSingleStudent";
 import SelectMultipleStudents from "../components/navComponents/SelectMultipleStudents";
-import SelectChartFilters from "../components/navComponents/SelectChartFIlters";
+import SelectFilterSettings from "../components/navComponents/SelectfilterSettings";
 import "../styles/nav/nav.css";
 
 function Navigation({
@@ -9,13 +9,13 @@ function Navigation({
   handleSubmitSelectedStudents,
   handleChangeStudentCheckbox,
   handleAllSelectedStudents,
-  handleChangeChartCheckboxes,
-  chartFilters,
+  handleFilterSettings,
+  filterSettings,
 }) {
   const [showItems, setShowItems] = useState({
     StudentLinks: false,
     StudentCheckboxes: false,
-    ChartFilters: false,
+    filterSettings: false,
   });
 
   // set state to show the menu items when the mouse enters
@@ -24,12 +24,12 @@ function Navigation({
     if (
       targetElement === "StudentLinks" ||
       targetElement === "StudentCheckboxes" ||
-      targetElement === "ChartFilters"
+      targetElement === "filterSettings"
     ) {
       setShowItems({
         StudentLinks: false,
         StudentCheckboxes: false,
-        ChartFilters: false,
+        filterSettings: false,
         [targetElement]: true,
       });
     }
@@ -40,7 +40,7 @@ function Navigation({
     setShowItems({
       StudentLinks: false,
       StudentCheckboxes: false,
-      ChartFilters: false,
+      filterSettings: false,
     });
   };
 
@@ -62,12 +62,12 @@ function Navigation({
         handleAllSelectedStudents={handleAllSelectedStudents}
       />
 
-      <SelectChartFilters
+      <SelectFilterSettings
         showItems={showItems}
         handleMouseOverShowItems={handleMouseOverShowItems}
         handleMouseOutHideItems={handleMouseOutHideItems}
-        handleChangeChartCheckboxes={handleChangeChartCheckboxes}
-        chartFilters={chartFilters}
+        handleFilterSettings={handleFilterSettings}
+        filterSettings={filterSettings}
       />
     </nav>
   );

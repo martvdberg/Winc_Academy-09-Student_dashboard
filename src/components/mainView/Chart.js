@@ -15,7 +15,7 @@ import {
 const colorFun = "#F6830F";
 const colorDiff = "#BB2205";
 
-function Chart({ chartData, chartFilters }) {
+function Chart({ chartData, filterSettings }) {
   return (
     <div className="main__chart">
       <div className="main__chart--legend legend"></div>
@@ -56,8 +56,8 @@ function Chart({ chartData, chartFilters }) {
           />
 
           <VictoryGroup offset={7} style={{ data: { width: 6 } }}>
-            {chartFilters.funChart ? (
-              chartFilters.barChart ? (
+            {filterSettings.funChart ? (
+              filterSettings.barChart ? (
                 <VictoryBar
                   data={chartData}
                   x="task"
@@ -74,8 +74,8 @@ function Chart({ chartData, chartFilters }) {
               )
             ) : null}
 
-            {chartFilters.diffChart ? (
-              chartFilters.barChart ? (
+            {filterSettings.diffChart ? (
+              filterSettings.barChart ? (
                 <VictoryBar
                   data={chartData}
                   x="task"

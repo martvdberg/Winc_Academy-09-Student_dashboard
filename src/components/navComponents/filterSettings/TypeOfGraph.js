@@ -1,6 +1,6 @@
 import React from "react";
 
-function TypeOfGraph({ chartFilters, handleChangeChartCheckboxes }) {
+function TypeOfGraph({ filterSettings, handleFilterSettings }) {
   return (
     <div className="menu__subMenu">
       <h3 className="menu__subMenu--header">Graph type</h3>
@@ -12,10 +12,9 @@ function TypeOfGraph({ chartFilters, handleChangeChartCheckboxes }) {
           className="menu__option--checkbox"
           name="graphType"
           value="barChart"
-          checked={chartFilters.barChart}
-          onChange={() => {}}
-          onClick={(event) => {
-            handleChangeChartCheckboxes(event);
+          checked={filterSettings.barChart}
+          onChange={(event) => {
+            handleFilterSettings(event);
           }}
         />
         Bars
@@ -28,10 +27,9 @@ function TypeOfGraph({ chartFilters, handleChangeChartCheckboxes }) {
           className="menu__option--checkbox"
           name="graphType"
           value="lineGraph"
-          checked={chartFilters.lineGraph}
-          onChange={() => {}}
-          onClick={(event) => {
-            handleChangeChartCheckboxes(event);
+          checked={filterSettings.lineGraph}
+          onChange={(event) => {
+            handleFilterSettings(event);
           }}
         />
         Line

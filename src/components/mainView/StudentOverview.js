@@ -8,17 +8,17 @@ import Table from "./Table";
 function StudentOverview({
   student,
   chartData,
-  chartFilters,
+  filterSettings,
   handleAllSelectedStudents,
 }) {
   return (
     <>
-      <Chart chartData={chartData} chartFilters={chartFilters} />
+      <Chart chartData={chartData} filterSettings={filterSettings} />
       <StudentBig
         student={student}
         handleAllSelectedStudents={handleAllSelectedStudents}
       />
-      {chartFilters.table ? <Table chartData={chartData} /> : null}
+      {filterSettings.showTable ? <Table chartData={chartData} /> : null}
 
       <Link to={"/"} className="main__btn main__btn--back">
         Back to overview

@@ -1,32 +1,32 @@
 import React from "react";
 
-function ShowChart({ chartFilters, handleChangeChartCheckboxes }) {
+function ShowChart({ filterSettings, handleFilterSettings }) {
   return (
     <div className="menu__subMenu">
       <h3 className="menu__subMenu--header">Choose data</h3>
-      <label htmlFor="filterFun" className="menu__option">
+      <label htmlFor="funChart" className="menu__option">
         <input
           type="checkbox"
-          id="filterFun"
+          id="funChart"
           className="menu__option--checkbox"
           value="funChart"
-          checked={chartFilters.funChart}
+          checked={filterSettings.funChart}
           onChange={(event) => {
-            handleChangeChartCheckboxes(event);
+            handleFilterSettings(event);
           }}
         />
         Fun
       </label>
 
-      <label htmlFor="filterDiff" className="menu__option">
+      <label htmlFor="diffChart" className="menu__option">
         <input
           type="checkbox"
-          id="filterDiff"
+          id="diffChart"
           className="menu__option--checkbox"
           value="diffChart"
-          checked={chartFilters.diffChart}
+          checked={filterSettings.diffChart}
           onChange={(event) => {
-            handleChangeChartCheckboxes(event);
+            handleFilterSettings(event);
           }}
         />
         Difficult

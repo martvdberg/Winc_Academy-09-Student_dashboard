@@ -20,12 +20,12 @@ function App() {
   const [allSelectedStudents, setAllSelectedStudents] = useState([]);
   const [sortedData, setSortedData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [chartFilters, setChartFilters] = useState({
+  const [filterSettings, setFilterSettings] = useState({
     funChart: true,
     diffChart: true,
     lineGraph: false,
     barChart: true,
-    table: false,
+    showTable: false,
     sortFun: false,
     sortDiff: false,
     sortNone: true,
@@ -51,16 +51,16 @@ function App() {
   // sort data when the option is selected in the settings filter menu
   useEffect(() => {
     let newState = [...averagePerTask];
-    if (chartFilters.sortFun) {
-      sortAssignmentByGrade(newState, "fun", chartFilters.sortOrder);
-    } else if (chartFilters.sortDiff) {
-      sortAssignmentByGrade(newState, "diff", chartFilters.sortOrder);
+    if (filterSettings.sortFun) {
+      sortAssignmentByGrade(newState, "fun", filterSettings.sortOrder);
+    } else if (filterSettings.sortDiff) {
+      sortAssignmentByGrade(newState, "diff", filterSettings.sortOrder);
     }
     setSortedData(newState);
   }, [
-    chartFilters.sortFun,
-    chartFilters.sortDiff,
-    chartFilters.sortOrder,
+    filterSettings.sortFun,
+    filterSettings.sortDiff,
+    filterSettings.sortOrder,
     averagePerTask,
   ]);
 
@@ -108,8 +108,8 @@ function App() {
   };
 
   // set the checked property to true or false when a student gets selected or deselected
-  const handleChangeStudentCheckbox = (event) => {
-    return setDataPerStudent((prevState) => {
+  const handleChangeStudentCheckbox = (event) =>
+    setDataPerStudent((prevState) => {
       const newState = prevState.map((student, index) => {
         if (student.details.id === event.target.value) {
           return {
@@ -125,7 +125,6 @@ function App() {
       });
       return newState;
     });
-  };
 
   // change checked property for all students when select all or reset is selected
   const handleAllSelectedStudents = (event) => {
@@ -158,53 +157,44 @@ function App() {
   };
 
   // Event handler to set all chart filter option chexboxes and radiobtn inputs
-  const handleChangeChartCheckboxes = (event) => {
-    setChartFilters((prevState) => {
+  const handleFilterSettings = (event) => {
+    const elementId = event.target.id;
+
+    setFilterSettings((prevState) => {
       let newState;
-      if (
-        event.target.value === "lineGraph" ||
-        event.target.value === "barChart"
-      ) {
+      if (elementId === "lineGraph" || elementId === "barChart") {
         newState = {
           ...prevState,
           lineGraph: false,
           barChart: false,
-          [event.target.value]: true,
+          [elementId]: true,
         };
-      }
-      // select sort option or fun, diff or none
-      else if (
-        event.target.value === "sortNone" ||
-        event.target.value === "sortFun" ||
-        event.target.value === "sortDiff"
+      } else if (
+        elementId === "sortNone" ||
+        elementId === "sortFun" ||
+        elementId === "sortDiff"
       ) {
         newState = {
           ...prevState,
           sortFun: false,
           sortDiff: false,
           sortNone: false,
-          [event.target.value]: true,
+          [elementId]: true,
         };
-      } else if (event.target.title === "sortOrder") {
+      } else {
         newState = {
           ...prevState,
-          sortOrder: !prevState.sortOrder,
+          [elementId]: !prevState[elementId],
         };
       }
-      // Select to show fun chart, diff chart or both and also handle show table
-      else {
-        newState = {
-          ...prevState,
-          [event.target.value]: !prevState[event.target.value],
-        };
-      }
+
       // make sure there will always be a graph (line or bar) visible
       if (!newState.funChart && !newState.diffChart) {
         newState = {
           ...newState,
           funChart: true,
           diffChart: true,
-          [event.target.value]: false,
+          [elementId]: false,
         };
       }
       return newState;
@@ -220,19 +210,19 @@ function App() {
           handleChangeStudentCheckbox={handleChangeStudentCheckbox}
           handleSubmitSelectedStudents={handleSubmitSelectedStudents}
           handleAllSelectedStudents={handleAllSelectedStudents}
-          handleChangeChartCheckboxes={handleChangeChartCheckboxes}
-          chartFilters={chartFilters}
+          handleFilterSettings={handleFilterSettings}
+          filterSettings={filterSettings}
         />
 
         <Main
           students={dataPerStudent}
           average={
-            chartFilters.sortFun || chartFilters.sortDiff
+            filterSettings.sortFun || filterSettings.sortDiff
               ? sortedData
               : averagePerTask
           }
           handleAllSelectedStudents={handleAllSelectedStudents}
-          chartFilters={chartFilters}
+          filterSettings={filterSettings}
           allSelectedStudents={allSelectedStudents}
           loading={loading}
         />

@@ -1,6 +1,6 @@
 import React from "react";
 
-function SortTask({ handleChangeChartCheckboxes, chartFilters }) {
+function SortTask({ handleFilterSettings, filterSettings }) {
   return (
     <div className="menu__subMenu">
       <h3 className="menu__subMenu--header">Sort tasks</h3>
@@ -11,10 +11,9 @@ function SortTask({ handleChangeChartCheckboxes, chartFilters }) {
           className="menu__option--checkbox"
           name="sortTask"
           value="sortNone"
-          checked={chartFilters.sortNone}
-          onChange={() => {}}
-          onClick={(event) => {
-            handleChangeChartCheckboxes(event);
+          checked={filterSettings.sortNone}
+          onChange={(event) => {
+            handleFilterSettings(event);
           }}
         />
         None
@@ -26,10 +25,9 @@ function SortTask({ handleChangeChartCheckboxes, chartFilters }) {
           className="menu__option--checkbox"
           name="sortTask"
           value="sortFun"
-          checked={chartFilters.sortFun}
-          onChange={() => {}}
-          onClick={(event) => {
-            handleChangeChartCheckboxes(event);
+          checked={filterSettings.sortFun}
+          onChange={(event) => {
+            handleFilterSettings(event);
           }}
         />
         Fun
@@ -41,26 +39,27 @@ function SortTask({ handleChangeChartCheckboxes, chartFilters }) {
           className="menu__option--checkbox"
           name="sortTask"
           value="sortDiff"
-          checked={chartFilters.sortDiff}
+          checked={filterSettings.sortDiff}
           onChange={() => {}}
           onClick={(event) => {
-            handleChangeChartCheckboxes(event);
+            handleFilterSettings(event);
           }}
         />
         Difficult
       </label>
       <span
+        id="sortOrder"
         title="sortOrder"
         className="menu__option menu__option--order"
         onClick={(event) => {
-          handleChangeChartCheckboxes(event);
+          handleFilterSettings(event);
         }}
       >
         sort order
-        <span className={chartFilters.sortOrder ? "selectedOrder" : ""}>
+        <span className={filterSettings.sortOrder ? "selectedOrder" : ""}>
           &#x2193;
         </span>
-        <span className={!chartFilters.sortOrder ? "selectedOrder" : ""}>
+        <span className={!filterSettings.sortOrder ? "selectedOrder" : ""}>
           &#x2191;
         </span>
       </span>

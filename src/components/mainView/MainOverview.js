@@ -3,16 +3,16 @@ import Chart from "./Chart";
 import StudentSmall from "./student/StudentSmall";
 import Table from "./Table";
 
-function MainOverview({ chartData, chartFilters, students, loading }) {
+function MainOverview({ chartData, filterSettings, students, loading }) {
   return (
     <>
       {loading ? (
         <h2 className="main__loading">Loading...</h2>
       ) : (
         <>
-          <Chart chartData={chartData} chartFilters={chartFilters} />
+          <Chart chartData={chartData} filterSettings={filterSettings} />
           <StudentSmall students={students} />
-          {chartFilters.table ? <Table chartData={chartData} /> : null}
+          {filterSettings.showTable ? <Table chartData={chartData} /> : null}
         </>
       )}
     </>

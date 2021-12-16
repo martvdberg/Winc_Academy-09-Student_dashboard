@@ -9,18 +9,18 @@ function Main({
   students,
   average,
   handleAllSelectedStudents,
-  chartFilters,
+  filterSettings,
   allSelectedStudents,
   loading,
 }) {
   // create a path for each student
   const studentPages = students.map((student) => {
-    // sort the assignments when chartFilters.sortFun or ...diff is true
+    // sort the assignments when filterSettings.sortFun or ...diff is true
     let assignments = [...student.assignments];
-    if (chartFilters.sortFun) {
-      sortAssignmentByGrade(assignments, "fun", chartFilters.sortOrder);
-    } else if (chartFilters.sortDiff) {
-      sortAssignmentByGrade(assignments, "diff", chartFilters.sortOrder);
+    if (filterSettings.sortFun) {
+      sortAssignmentByGrade(assignments, "fun", filterSettings.sortOrder);
+    } else if (filterSettings.sortDiff) {
+      sortAssignmentByGrade(assignments, "diff", filterSettings.sortOrder);
     }
 
     return (
@@ -32,7 +32,7 @@ function Main({
             student={student}
             chartData={assignments}
             handleAllSelectedStudents={handleAllSelectedStudents}
-            chartFilters={chartFilters}
+            filterSettings={filterSettings}
           />
         }
       />
@@ -47,7 +47,7 @@ function Main({
           element={
             <MainOverview
               chartData={average}
-              chartFilters={chartFilters}
+              filterSettings={filterSettings}
               students={allSelectedStudents}
               loading={loading}
             />
