@@ -6,9 +6,8 @@ import "../styles/nav/nav.css";
 
 function Navigation({
   dataPerStudent,
-  handleSubmitSelectedStudents,
   handleChangeStudentCheckbox,
-  handleAllSelectedStudents,
+  handleSelectAllStudents,
   handleFilterSettings,
   filterSettings,
 }) {
@@ -58,8 +57,7 @@ function Navigation({
         handleMouseOverShowItems={handleMouseOverShowItems}
         handleMouseOutHideItems={handleMouseOutHideItems}
         handleChangeStudentCheckbox={handleChangeStudentCheckbox}
-        handleSubmitSelectedStudents={handleSubmitSelectedStudents}
-        handleAllSelectedStudents={handleAllSelectedStudents}
+        handleSelectAllStudents={handleSelectAllStudents}
       />
 
       <SelectFilterSettings

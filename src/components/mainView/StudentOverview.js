@@ -9,14 +9,14 @@ function StudentOverview({
   student,
   chartData,
   filterSettings,
-  handleAllSelectedStudents,
+  handleSelectAllStudents,
 }) {
   return (
     <>
       <Chart chartData={chartData} filterSettings={filterSettings} />
       <StudentBig
         student={student}
-        handleAllSelectedStudents={handleAllSelectedStudents}
+        handleSelectAllStudents={handleSelectAllStudents}
       />
       {filterSettings.showTable ? <Table chartData={chartData} /> : null}
 

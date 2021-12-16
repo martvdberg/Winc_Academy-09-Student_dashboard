@@ -8,8 +8,7 @@ function SelectMultipleStudents({
   handleMouseOutHideItems,
   handleChangeStudentCheckbox,
   showItems,
-  handleSubmitSelectedStudents,
-  handleAllSelectedStudents,
+  handleSelectAllStudents,
 }) {
   const StudentFilterCheckbox = students.map((student) => {
     return (
@@ -50,7 +49,7 @@ function SelectMultipleStudents({
             className="menu__btn menu__btn--all"
             title="selectAll"
             onClick={(event) => {
-              handleAllSelectedStudents(event);
+              handleSelectAllStudents(event);
             }}
           >
             select all
@@ -59,21 +58,15 @@ function SelectMultipleStudents({
             className="menu__btn menu__btn--reset"
             title="reset"
             onClick={(event) => {
-              handleAllSelectedStudents(event);
+              handleSelectAllStudents(event);
             }}
           >
             Reset
           </span>
-          <span
-            className="menu__btn menu__btn--apply"
-            onClick={(event) => {
-              handleMouseOverShowItems(event);
-              handleSubmitSelectedStudents();
-            }}
-          >
-            {/* link to home to get out of the student page if your on one */}
-            <Link to={"/"}>Apply</Link>
-          </span>
+          {/* link to home to get out of the student page if your on one */}
+          <Link to={"/"} className="menu__btn menu__btn--apply">
+            Apply
+          </Link>
         </div>
       </div>
     </div>

@@ -8,12 +8,12 @@ import "../styles/main/main.css";
 function Main({
   students,
   average,
-  handleAllSelectedStudents,
+  handleSelectAllStudents,
   filterSettings,
   allSelectedStudents,
   loading,
 }) {
-  // create a path for each student
+  // create a routing path for each student
   const studentPages = students.map((student) => {
     // sort the assignments when filterSettings.sortFun or ...diff is true
     let assignments = [...student.assignments];
@@ -31,7 +31,7 @@ function Main({
           <StudentOverview
             student={student}
             chartData={assignments}
-            handleAllSelectedStudents={handleAllSelectedStudents}
+            handleSelectAllStudents={handleSelectAllStudents}
             filterSettings={filterSettings}
           />
         }

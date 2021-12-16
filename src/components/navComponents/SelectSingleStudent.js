@@ -32,7 +32,6 @@ function SelectSingleStudent({
       <div
         className={`menu  ${showItems.StudentLinks ? "" : "hidden"}`}
         id="studentLinks"
-        onClick={(event) => handleMouseOverShowItems(event)}
       >
         {studentFilterLink}
       </div>

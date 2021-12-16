@@ -3,7 +3,7 @@ import React from "react";
 function SortTask({ handleFilterSettings, filterSettings }) {
   return (
     <div className="menu__subMenu">
-      <h3 className="menu__subMenu--header">Sort tasks</h3>
+      <h3 className="menu__subMenu--header">Sort by grades</h3>
       <label htmlFor="sortNone" className="menu__option">
         <input
           type="radio"
@@ -40,8 +40,7 @@ function SortTask({ handleFilterSettings, filterSettings }) {
           name="sortTask"
           value="sortDiff"
           checked={filterSettings.sortDiff}
-          onChange={() => {}}
-          onClick={(event) => {
+          onChange={(event) => {
             handleFilterSettings(event);
           }}
         />
@@ -49,7 +48,6 @@ function SortTask({ handleFilterSettings, filterSettings }) {
       </label>
       <span
         id="sortOrder"
-        title="sortOrder"
         className="menu__option menu__option--order"
         onClick={(event) => {
           handleFilterSettings(event);

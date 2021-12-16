@@ -14,7 +14,7 @@ function Table({ chartData }) {
 
   return (
     <table className="main__table">
-      <thead className="main__table--row--head">
+      <thead className="main__table--head">
         <tr className="main__table--row">
           <th className="main__table--header main__table--task">Task</th>
           <th className="main__table--header main__table--rating">Fun</th>

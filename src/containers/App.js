@@ -41,14 +41,14 @@ function App() {
       const arrayFromCsv = csvToArray(result);
       const arrayPerStudent = createObjectPerPerson(arrayFromCsv);
       const average = calcAverage(arrayPerStudent);
-      setDataPerStudent(arrayPerStudent);
       setAveragePerTask(average);
+      setDataPerStudent(arrayPerStudent);
       setLoading(false);
     };
     getData();
   }, []);
 
-  // sort data when the option is selected in the settings filter menu
+  // sort data when the option is selected in the filter settings menu
   useEffect(() => {
     let newState = [...averagePerTask];
     if (filterSettings.sortFun) {
@@ -108,26 +108,30 @@ function App() {
   };
 
   // set the checked property to true or false when a student gets selected or deselected
-  const handleChangeStudentCheckbox = (event) =>
-    setDataPerStudent((prevState) => {
-      const newState = prevState.map((student, index) => {
-        if (student.details.id === event.target.value) {
-          return {
-            details: {
-              ...student.details,
-              checked: !prevState[index].details.checked,
-            },
-            assignments: [...student.assignments],
-          };
-        } else {
-          return { ...student };
-        }
-      });
-      return newState;
+  const handleChangeStudentCheckbox = (event) => {
+    const newState = dataPerStudent.map((student, index) => {
+      if (student.details.id === event.target.value) {
+        return {
+          details: {
+            ...student.details,
+            checked: !dataPerStudent[index].details.checked,
+          },
+          assignments: [...student.assignments],
+        };
+      } else {
+        return { ...student };
+      }
     });
 
+    const selectedStudents = getSelectedStudents(newState);
+    const newAverage = calcAverage(newState);
+    setDataPerStudent(newState);
+    setAllSelectedStudents(selectedStudents);
+    setAveragePerTask(newAverage);
+  };
+
   // change checked property for all students when select all or reset is selected
-  const handleAllSelectedStudents = (event) => {
+  const handleSelectAllStudents = (event) => {
     const newCheckedStatus = event.target.title === "reset" ? false : true;
     const newState = dataPerStudent.map((student) => {
       return {
@@ -138,22 +142,12 @@ function App() {
         assignments: [...student.assignments],
       };
     });
-    setDataPerStudent(newState);
-    // reset the chart and selected students when reset is pressed
-    if (!newCheckedStatus) {
-      const selectedStudents = getSelectedStudents(newState);
-      const newAverage = calcAverage(newState);
-      setAllSelectedStudents(selectedStudents);
-      setAveragePerTask(newAverage);
-    }
-  };
 
-  // Event handler for when the apply button inside select multiple students gets clicked
-  const handleSubmitSelectedStudents = () => {
-    const newAverage = calcAverage(dataPerStudent);
-    const selectedStudents = getSelectedStudents(dataPerStudent);
-    setAveragePerTask(newAverage);
+    setDataPerStudent(newState);
+    const selectedStudents = getSelectedStudents(newState);
+    const newAverage = calcAverage(newState);
     setAllSelectedStudents(selectedStudents);
+    setAveragePerTask(newAverage);
   };
 
   // Event handler to set all chart filter option chexboxes and radiobtn inputs
@@ -204,12 +198,11 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Header handleAllSelectedStudents={handleAllSelectedStudents} />
+        <Header handleSelectAllStudents={handleSelectAllStudents} />
         <Navigation
           dataPerStudent={dataPerStudent}
           handleChangeStudentCheckbox={handleChangeStudentCheckbox}
-          handleSubmitSelectedStudents={handleSubmitSelectedStudents}
-          handleAllSelectedStudents={handleAllSelectedStudents}
+          handleSelectAllStudents={handleSelectAllStudents}
           handleFilterSettings={handleFilterSettings}
           filterSettings={filterSettings}
         />
@@ -221,7 +214,7 @@ function App() {
               ? sortedData
               : averagePerTask
           }
-          handleAllSelectedStudents={handleAllSelectedStudents}
+          handleSelectAllStudents={handleSelectAllStudents}
           filterSettings={filterSettings}
           allSelectedStudents={allSelectedStudents}
           loading={loading}

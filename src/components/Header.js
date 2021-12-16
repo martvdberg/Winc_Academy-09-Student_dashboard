@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "../styles/header/header.css";
 
-function Header({ handleAllSelectedStudents }) {
+function Header({ handleSelectAllStudents }) {
   return (
     <header className="header">
       <Link to="/" className="header__text header__link">
@@ -11,20 +11,11 @@ function Header({ handleAllSelectedStudents }) {
           title="reset"
           className="header__text--top"
           onClick={(event) => {
-            handleAllSelectedStudents(event);
+            handleSelectAllStudents(event);
           }}
         >
           Student dashboard
         </h1>
-        {/* <h1
-          title="reset"
-          className="header__text--bottom"
-          onClick={(event) => {
-            handleAllSelectedStudents(event);
-          }}
-        >
-          dashboard
-        </h1> */}
       </Link>
     </header>
   );
